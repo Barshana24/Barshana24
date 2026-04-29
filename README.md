@@ -1,5 +1,5 @@
 # 💫 About Me:
-🔭 I’m currently working on<br>👯 I’m looking to collaborate on Frontend projects.<br>🤝 I’m looking for help with Backend. <br>💬 Ask me about Java<br>⚡ Fun fact: I love solving puzzles
+👯 I’m looking to collaborate on Frontend projects.<br>🤝 I’m looking for help with Backend. <br>💬 Ask me about Java<br>⚡ Fun fact: I love solving puzzles
 
 
 ## 🌐 Socials:
