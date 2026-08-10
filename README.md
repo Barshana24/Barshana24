@@ -37,10 +37,3 @@ Python · TypeScript · SQL · FastAPI · React / Next.js · PostgreSQL · Ollam
 ## Elsewhere
 
 [Portfolio](https://barshana24.github.io/portfolio_personal/) · [LinkedIn](https://www.linkedin.com/in/barshana-chatterjee) · [Email](mailto:barshanachatterjee@gmail.com)
-
-<div align="center">
-
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Barshana24&show_icons=true&hide_border=true&bg_color=0A0A0C&title_color=FF5F1F&text_color=C9C9D4&icon_color=FF5F1F)
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Barshana24&layout=compact&hide_border=true&bg_color=0A0A0C&title_color=FF5F1F&text_color=C9C9D4)
-
-</div>
