@@ -1,6 +1,6 @@
 # Barshana Chatterjee
 Hi!
-I build full-stack tools that put AI to work on real data, usually running on a local model. Based in Kolkata, India.
+I build stuffs that put AI to work on real data, usually running on a local model. 
 
 ## Stack
 
