@@ -1,4 +1,4 @@
-<img src="./assets/header.svg" alt="Barshana Chatterjee. I build things that put AI to work on real data, usually on a local model." width="100%">
+<img src="https://raw.githubusercontent.com/Barshana24/Barshana24/main/assets/header.svg?v=1" alt="Barshana Chatterjee. I build things that put AI to work on real data, usually on a local model." width="100%">
 
 <p align="center">
   <a href="https://barshana24.github.io/portfolio_personal/"><img src="https://img.shields.io/badge/PORTFOLIO-0d1117?style=for-the-badge&logo=googlechrome&logoColor=22d3ee&labelColor=0d1117" alt="Portfolio"></a>
@@ -14,7 +14,7 @@
 
 ### Stack
 
-<img src="./assets/stack.svg" alt="Stack weighted by use. Python, TypeScript, SQL, JavaScript, MATLAB. Ollama and local LLMs, FastAPI, React and Next.js, PostgreSQL, BigQuery." width="100%">
+<img src="https://raw.githubusercontent.com/Barshana24/Barshana24/main/assets/stack.svg?v=1" alt="Stack weighted by use. Python, TypeScript, SQL, JavaScript, MATLAB. Ollama and local LLMs, FastAPI, React and Next.js, PostgreSQL, BigQuery." width="100%">
 
 ### Selected work
 
