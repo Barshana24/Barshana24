@@ -14,7 +14,7 @@
 
 ### Stack
 
-<img src="https://raw.githubusercontent.com/Barshana24/Barshana24/main/assets/stack.svg?v=1" alt="Stack weighted by use. Python, TypeScript, SQL, JavaScript, MATLAB. Ollama and local LLMs, FastAPI, React and Next.js, PostgreSQL, BigQuery." width="100%">
+<img src="https://raw.githubusercontent.com/Barshana24/Barshana24/main/assets/stack.svg?v=2" alt="Stack weighted by use. Python, TypeScript, SQL, JavaScript, MATLAB. Ollama and local LLMs, FastAPI, React and Next.js, PostgreSQL, BigQuery." width="100%">
 
 ### Selected work
 
