@@ -9,11 +9,13 @@ bottom edge. Run this after editing any content below.
 
 Two constraints shaped this file, both worth knowing before you change it.
 
-1. Panels are composited into four files rather than one file each.
-   raw.githubusercontent.com rate limits unauthenticated traffic, and fifteen
-   images on one page reliably drew HTTP 429 for a third of them. Panels are
+1. Panels are composited into two files rather than one file each. They are
    stacked inside a taller SVG with transparent gaps between them, which looks
-   identical to separate images but costs one request instead of fifteen.
+   identical to separate images at a fraction of the requests. This matters
+   because raw.githubusercontent.com rate limits requests that reach origin
+   with HTTP 429. The thing that actually forces origin hits is a unique query
+   string, so the README links these files with no ?v= cache-buster; keeping
+   the URL stable means visitors are served from the CDN edge instead.
 
 2. Nothing is animated. GitHub renders README SVGs in secure static mode, so
    animation timelines never advance and anything depending on one renders
