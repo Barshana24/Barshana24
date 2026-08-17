@@ -569,11 +569,11 @@ def p_titleblock():
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
     print("writing panels to", OUT)
-    # Grouped into four files to stay well under the raw.githubusercontent.com
-    # rate limit. See the module docstring.
-    compose("sheet-a.svg", [p_header(), p_brief(), p_signals(), p_stack(), p_pipeline()],
+    # Two files, split only where the README needs real HTML links in between.
+    # Every extra file is another request against the rate limit described in
+    # the module docstring, so resist adding more.
+    compose("sheet-1.svg", [p_header(), p_brief(), p_signals(), p_stack(), p_pipeline()],
             title="Barshana Chatterjee")
-    compose("sheet-b.svg", [p_work(), CardGrid()], title="Work manifest")
-    compose("sheet-c.svg", [p_upstream()], title="Upstream")
-    compose("sheet-d.svg", [p_titleblock()], title="Title block")
+    compose("sheet-2.svg", [p_work(), CardGrid(), p_upstream(), p_titleblock()],
+            title="Work, upstream, contact")
     print("done")
