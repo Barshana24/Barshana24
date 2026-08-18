@@ -438,7 +438,7 @@ def p_work():
     h = 98
     b = [sheet_head("04", "WORK MANIFEST", "$ ls ./projects --selected"), rule(40, 50, 960),
          mono(40, 76, 9.5, T5,
-              f"SIX OF FOURTEEN PUBLIC REPOSITORIES  {DOT}  LINKS BELOW", ls=1.6)]
+              f"SIX SELECTED PROJECTS  {DOT}  LINKS BELOW", ls=1.6)]
     return Panel("wrk", h, "\n    ".join(b),
                  "Work manifest. Six selected projects.")
 
@@ -711,7 +711,7 @@ def n_pipeline():
 
 def n_work():
     b = [n_head("04", "WORK MANIFEST", "$ ls --selected"), rule(NM, 44, NW - NM),
-         mono(NM, 66, 8.5, T5, f"SIX OF FOURTEEN REPOS  {DOT}  LINKS BELOW", ls=1.3)]
+         mono(NM, 66, 8.5, T5, f"SIX SELECTED PROJECTS  {DOT}  LINKS BELOW", ls=1.3)]
     return Panel("nwrk", 84, "\n    ".join(b),
                  "Work manifest. Six selected projects.",
                  w=NW)
