@@ -71,7 +71,7 @@ DOT = "·"
 # content column, which on a phone is under 400px. Sizes below are authored at
 # a comfortable desktop scale and lifted by this factor so the smallest labels
 # survive that reduction. Raising it further starts crowding the two-column
-# layout in the brief panel, so re-render and check for collisions.
+# layout in the systems map, so re-render and check for collisions.
 TYPE_SCALE = 1.15
 
 
@@ -278,76 +278,10 @@ def p_header():
                  glow=(880, 30, 360, 200, CY, 0.16), corner_marks=True)
 
 
+# The brief and signals sheets were removed on request. The bio they carried now
+# lives only on the identity sheet, and the stat tiles are gone entirely.
+
 # ---------------------------------------------------------------- sheet 02
-
-FOCUS = [
-    (CY, "LOCAL-LLM TOOLING", "docs, code review, prompt compression"),
-    (VI, "AGENT BENCHMARKS", "upstream CLI work on AOBench for HPC"),
-    (GR, f"RF {DOT} DSP", "SIW antenna design, Springer Nature paper"),
-]
-
-# Keep these lines short. The focus column starts at x=580 and long lines here
-# are what collide with it first on wider fallback fonts.
-BIO = [
-    "I build things that put AI to work on real data, usually on",
-    "a local model. Most of what I ship runs fully offline: no",
-    "API keys, and nothing leaves the machine it runs on.",
-]
-
-
-def p_brief():
-    h = 300
-    b = [sheet_head("02", "BRIEF", "$ whoami --verbose"), rule(40, 50, 960)]
-    for i, line in enumerate(BIO):
-        b.append(sans(40, 86 + i * 22, 13.5, T2, esc(line)))
-
-    b.append(mono(40, 180, 10, T5, "OPERATING PRINCIPLE", ls=1.8))
-    b.append(f'<rect x="40" y="192" width="2" height="46" rx="1" fill="{CY}" opacity="0.7"/>')
-    b.append(sans(56, 212, 14, T1, "If a model can run on the machine that already"))
-    b.append(sans(56, 232, 14, T1, "holds the data, it should."))
-
-    b.append(mono(580, 86, 10, T5, "CURRENT FOCUS", ls=1.8))
-    for i, (col, label, desc) in enumerate(FOCUS):
-        y = 122 + i * 44
-        b.append(f'<rect x="580" y="{y - 8}" width="5" height="5" fill="{col}"/>')
-        b.append(mono(596, y, 10, col, label, ls=1.3))
-        b.append(sans(596, y + 18, 11.5, T4, esc(desc)))
-
-    b.append(rule(40, 258, 960))
-    b.append(mono(40, 282, 10, GR, "&gt; open to collaboration", ls=1.2))
-
-    aria = ("Brief. " + " ".join(BIO) + " Operating principle: if a model can run on the "
-            "machine that already holds the data, it should. Current focus: "
-            + "; ".join(f"{a}, {c}" for _, a, c in FOCUS) + ". Open to collaboration.")
-    return Panel("brf", h, "\n    ".join(b), aria, glow=(120, 300, 380, 170, VI, 0.12))
-
-
-# ---------------------------------------------------------------- sheet 03
-
-TILES = [
-    ("PUBLIC REPOS", "14", CY),
-    ("SHIPPED TOOLS", "6", GR),
-    ("UPSTREAM PRs", "3", VI),
-    ("PUBLICATIONS", "1", AM),
-]
-
-
-def p_signals():
-    h = 152
-    b = [sheet_head("03", "SIGNALS", "$ stat --profile")]
-    tw, gap = 218, 16
-    for i, (label, value, col) in enumerate(TILES):
-        x = 40 + i * (tw + gap)
-        b.append(f'<rect x="{x}" y="56" width="{tw}" height="74" rx="10" '
-                 f'fill="{CARD_BG}" stroke="{BORDER}"/>')
-        b.append(mono(x + 14, 78, 8.5, T5, label, ls=1.6))
-        b.append(sans(x + 14, 112, 26, T1, value, weight=700))
-        b.append(f'<rect x="{x + 14}" y="120" width="56" height="2" rx="1" fill="{col}"/>')
-    aria = "Signals. " + ", ".join(f"{l}: {v}" for l, v, _ in TILES) + "."
-    return Panel("sig", h, "\n    ".join(b), aria)
-
-
-# ---------------------------------------------------------------- sheet 04
 
 LANGS = [
     ("Python", 92, "#3572A5"),
@@ -370,7 +304,7 @@ TRACK = 412
 
 def p_stack():
     h = 352
-    b = [sheet_head("04", "SYSTEMS MAP", "$ stack --resolve --weighted"),
+    b = [sheet_head("02", "SYSTEMS MAP", "$ stack --resolve --weighted"),
          rule(40, 50, 960),
          f'<path d="M500 66v228" stroke="#161d29" stroke-width="1"/>',
          mono(40, 82, 10, "#5a6472", "LANGUAGES", ls=1.8),
@@ -398,7 +332,7 @@ def p_stack():
     return Panel("stk", h, "\n    ".join(b), aria, glow=(500, 356, 520, 150, CY, 0.11))
 
 
-# ---------------------------------------------------------------- sheet 05
+# ---------------------------------------------------------------- sheet 03
 
 STAGES = [
     ("01", "INGEST", "Python " + DOT + " BigQuery", False),
@@ -411,7 +345,7 @@ STAGES = [
 
 def p_pipeline():
     h = 268
-    b = [sheet_head("05", "PIPELINE", "$ trace --end-to-end"), rule(40, 50, 960),
+    b = [sheet_head("03", "PIPELINE", "$ trace --end-to-end"), rule(40, 50, 960),
          mono(40, 74, 9.5, T5, "HOW A PROJECT ACTUALLY GETS BUILT, LEFT TO RIGHT", ls=1.6)]
 
     bw, gap, by, bh = 156, 35, 100, 78
@@ -439,7 +373,7 @@ def p_pipeline():
     return Panel("pip", h, "\n    ".join(b), aria, glow=(500, -20, 460, 170, VI, 0.10))
 
 
-# ---------------------------------------------------------------- sheet 06
+# ---------------------------------------------------------------- sheet 04
 
 CARDS = [
     dict(slug="technical-doc-generator", lang="Python", color="#3572A5",
@@ -500,7 +434,7 @@ def _card(c, i):
 
 def p_work():
     h = 98
-    b = [sheet_head("06", "WORK MANIFEST", "$ ls ./projects --selected"), rule(40, 50, 960),
+    b = [sheet_head("04", "WORK MANIFEST", "$ ls ./projects --selected"), rule(40, 50, 960),
          mono(40, 76, 9.5, T5,
               f"SIX OF FOURTEEN PUBLIC REPOSITORIES  {DOT}  LINKS BELOW", ls=1.6)]
     return Panel("wrk", h, "\n    ".join(b),
@@ -537,7 +471,7 @@ class CardGrid(Panel):
         return "\n".join(out)
 
 
-# ---------------------------------------------------------------- sheet 07
+# ---------------------------------------------------------------- sheet 05
 
 PRS = [
     ("43", "add --json to report json and compare runs", GR),
@@ -548,7 +482,7 @@ PRS = [
 
 def p_upstream():
     h = 296
-    b = [sheet_head("07", "UPSTREAM", "$ git log --author=Barshana24"), rule(40, 50, 960),
+    b = [sheet_head("05", "UPSTREAM", "$ git log --author=Barshana24"), rule(40, 50, 960),
          sans(40, 84, 13.5, T2, "AOBench is a role-aware, permission-enforced benchmark for AI"),
          sans(40, 106, 13.5, T2, "agents that operate HPC systems: SLURM, telemetry, RBAC. I work"),
          sans(40, 128, 13.5, T2, "on its command line interface."),
@@ -566,7 +500,7 @@ def p_upstream():
     return Panel("ups", h, "\n    ".join(b), aria, glow=(880, 300, 380, 160, GR, 0.10))
 
 
-# ---------------------------------------------------------------- sheet 08
+# ---------------------------------------------------------------- sheet 06
 
 # The contribution heatmap is drawn here from cached real data rather than
 # pulled from a service. Every third-party renderer for this was broken:
@@ -636,7 +570,7 @@ def contrib_stats():
 
 def p_contrib():
     grid, gw, gh = heat_grid(74, 102, 13, 3)
-    b = [sheet_head("08", "CONTRIBUTIONS", "$ git log --since=1.year | wc -l"),
+    b = [sheet_head("06", "CONTRIBUTIONS", "$ git log --since=1.year | wc -l"),
          rule(40, 50, 960),
          mono(40, 74, 9.5, T5,
               f"LAST 12 MONTHS  {DOT}  SNAPSHOT {CONTRIB['fetched']}", ls=1.5),
@@ -667,17 +601,17 @@ def p_contrib():
                  glow=(880, -20, 380, 150, CY, 0.11))
 
 
-# ---------------------------------------------------------------- sheet 09
+# ---------------------------------------------------------------- sheet 07
 
 BLOCK = [
-    [("DRAWN BY", "BARSHANA CHATTERJEE"), ("LOCATION", "KOLKATA, IN"), ("SHEETS", "09")],
-    [("DISCIPLINE", "AI SYSTEMS / RF"), ("STATUS", "OPEN TO COLLABORATION"), ("REVISION", "04")],
+    [("DRAWN BY", "BARSHANA CHATTERJEE"), ("LOCATION", "KOLKATA, IN"), ("SHEETS", "07")],
+    [("DISCIPLINE", "AI SYSTEMS / RF"), ("STATUS", "OPEN TO COLLABORATION"), ("REVISION", "05")],
 ]
 
 
 def p_titleblock():
     h = 176
-    b = [sheet_head("09", "TITLE BLOCK", "$ contact --print")]
+    b = [sheet_head("07", "TITLE BLOCK", "$ contact --print")]
     bx, by, bw, bh = 40, 62, 920, 84
     cw, ch = bw // 3, bh // 2
     b.append(f'<rect x="{bx}" y="{by}" width="{bw}" height="{bh}" rx="8" '
@@ -740,54 +674,8 @@ def n_header():
                  glow=(NW - 40, 20, 200, 150, CY, 0.16), corner_marks=True)
 
 
-def n_brief():
-    b = [n_head("02", "BRIEF", "$ whoami"), rule(NM, 44, NW - NM)]
-    body, y = lines(NM, 70, 11.5, T2, " ".join(BIO), NI, 19)
-    b.append(body)
-
-    y += 16
-    b.append(mono(NM, y, 8.5, T5, "OPERATING PRINCIPLE", ls=1.6))
-    b.append(f'<rect x="{NM}" y="{y + 10}" width="2" height="46" rx="1" fill="{CY}" opacity="0.7"/>')
-    pr, y2 = lines(NM + 14, y + 26, 12.5, T1,
-                   "If a model can run on the machine that already holds the data, it should.",
-                   NI - 14, 19)
-    b.append(pr)
-
-    y = y2 + 20
-    b.append(mono(NM, y, 8.5, T5, "CURRENT FOCUS", ls=1.6))
-    y += 22
-    for col, label, desc in FOCUS:
-        b.append(f'<rect x="{NM}" y="{y - 7}" width="5" height="5" fill="{col}"/>')
-        b.append(mono(NM + 14, y, 9, col, label, ls=1.1))
-        d, y = lines(NM + 14, y + 16, 10.5, T4, desc, NI - 14, 16)
-        b.append(d)
-        y += 12
-
-    aria = ("Brief. " + " ".join(BIO) + " Operating principle: if a model can run on the "
-            "machine that already holds the data, it should. Current focus: "
-            + "; ".join(f"{a}, {c}" for _, a, c in FOCUS) + ".")
-    return Panel("nbrf", int(y + 10), "\n    ".join(b), aria, w=NW,
-                 glow=(60, NW - 20, 220, 130, VI, 0.12))
-
-
-def n_signals():
-    b = [n_head("03", "SIGNALS", "$ stat")]
-    tw, th, g = (NI - 14) // 2, 66, 14
-    for i, (label, value, col) in enumerate(TILES):
-        x = NM + (i % 2) * (tw + g)
-        y = 50 + (i // 2) * (th + g)
-        b.append(f'<rect x="{x}" y="{y}" width="{tw}" height="{th}" rx="9" '
-                 f'fill="{CARD_BG}" stroke="{BORDER}"/>')
-        b.append(mono(x + 12, y + 20, 8, T5, label, ls=1.3))
-        b.append(sans(x + 12, y + 50, 22, T1, value, weight=700))
-        b.append(f'<rect x="{x + 12}" y="{y + 57}" width="42" height="2" rx="1" fill="{col}"/>')
-    h = 50 + 2 * (th + g) + 6
-    aria = "Signals. " + ", ".join(f"{l}: {v}" for l, v, _ in TILES) + "."
-    return Panel("nsig", h, "\n    ".join(b), aria, w=NW)
-
-
 def n_stack():
-    b = [n_head("04", "SYSTEMS MAP", "$ stack -w"), rule(NM, 44, NW - NM)]
+    b = [n_head("02", "SYSTEMS MAP", "$ stack -w"), rule(NM, 44, NW - NM)]
     y = 68
     for title, items in (("LANGUAGES", LANGS), ("RUNTIME / DATA", RUNTIME)):
         b.append(mono(NM, y, 8.5, "#5a6472", title, ls=1.6))
@@ -816,7 +704,7 @@ def n_stack():
 
 
 def n_pipeline():
-    b = [n_head("05", "PIPELINE", "$ trace"), rule(NM, 44, NW - NM),
+    b = [n_head("03", "PIPELINE", "$ trace"), rule(NM, 44, NW - NM),
          mono(NM, 66, 8.5, T5, "HOW A PROJECT GETS BUILT, TOP TO BOTTOM", ls=1.3)]
     y, bh, g = 84, 52, 22
     for i, (num, nm, tech, hero) in enumerate(STAGES):
@@ -846,7 +734,7 @@ def n_pipeline():
 
 
 def n_work():
-    b = [n_head("06", "WORK MANIFEST", "$ ls --selected"), rule(NM, 44, NW - NM),
+    b = [n_head("04", "WORK MANIFEST", "$ ls --selected"), rule(NM, 44, NW - NM),
          mono(NM, 66, 8.5, T5, f"SIX OF FOURTEEN REPOS  {DOT}  LINKS BELOW", ls=1.3)]
     return Panel("nwrk", 84, "\n    ".join(b),
                  "Work manifest. Six selected projects of fourteen public repositories.",
@@ -914,7 +802,7 @@ class NarrowCardGrid(Panel):
 
 
 def n_upstream():
-    b = [n_head("07", "UPSTREAM", "$ git log"), rule(NM, 44, NW - NM)]
+    b = [n_head("05", "UPSTREAM", "$ git log"), rule(NM, 44, NW - NM)]
     body, y = lines(NM, 70, 11.5, T2,
                     "AOBench is a role-aware, permission-enforced benchmark for AI agents "
                     "that operate HPC systems: SLURM, telemetry, RBAC. I work on its CLI.",
@@ -941,7 +829,7 @@ def n_contrib():
     # Cells shrink to fit 53 weeks into the narrow column. Day-of-week labels are
     # dropped; at this size they cost more room than they explain.
     grid, gw, gh = heat_grid(NM + 2, 96, 5.5, 1.4, month_size=7.5, min_label_px=30)
-    b = [n_head("08", "CONTRIBUTIONS", "$ git log -1y"), rule(NM, 44, NW - NM),
+    b = [n_head("06", "CONTRIBUTIONS", "$ git log -1y"), rule(NM, 44, NW - NM),
          mono(NM, 66, 8, T5, f"LAST 12 MONTHS  {DOT}  {CONTRIB['fetched']}", ls=1.2),
          grid]
 
@@ -970,7 +858,7 @@ def n_contrib():
 
 
 def n_titleblock():
-    b = [n_head("09", "TITLE BLOCK", "$ contact")]
+    b = [n_head("07", "TITLE BLOCK", "$ contact")]
     fields = [f for row in BLOCK for f in row]
     cw, ch = NI // 2, 40
     by = 46
@@ -996,13 +884,13 @@ if __name__ == "__main__":
     # Two files, split only where the README needs real HTML links in between.
     # Every extra file is another request against the rate limit described in
     # the module docstring, so resist adding more.
-    compose("sheet-1.svg", [p_header(), p_brief(), p_signals(), p_stack(), p_pipeline()],
+    compose("sheet-1.svg", [p_header(), p_stack(), p_pipeline()],
             title="Barshana Chatterjee")
     compose("sheet-2.svg", [p_work(), CardGrid(), p_upstream()] +
             ([p_contrib()] if CONTRIB else []) + [p_titleblock()],
             title="Work, upstream, contributions, contact")
     # Phone variants, selected by the <picture> media query in the README.
-    compose("sheet-1-sm.svg", [n_header(), n_brief(), n_signals(), n_stack(), n_pipeline()],
+    compose("sheet-1-sm.svg", [n_header(), n_stack(), n_pipeline()],
             gap=16, title="Barshana Chatterjee")
     compose("sheet-2-sm.svg", [n_work(), NarrowCardGrid(), n_upstream()] +
             ([n_contrib()] if CONTRIB else []) + [n_titleblock()],

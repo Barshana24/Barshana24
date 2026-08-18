@@ -1,0 +1,52 @@
+name: Refresh contributions sheet
+
+# Sheet 06 draws the contribution heatmap from a cached snapshot, so it goes
+# stale on its own. This refetches the numbers and redraws the sheets daily.
+#
+# Both scripts are standard library only, so there is nothing to install.
+
+on:
+  schedule:
+    # 04:20 UTC daily. Deliberately off the hour: GitHub queues scheduled jobs
+    # heavily at :00 and they can be delayed or dropped under load.
+    - cron: "20 4 * * *"
+  workflow_dispatch: # lets you trigger a refresh by hand from the Actions tab
+
+# The job commits back to the repo, which the default token cannot do read-only.
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-contributions
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch contribution data
+        run: python tools/fetch_contributions.py
+
+      - name: Redraw sheets
+        run: python tools/build_panels.py
+
+      - name: Commit if anything changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Nothing changes on a day with no new contributions, and an empty
+          # commit would add noise to the history for no reason.
+          if git diff --quiet -- assets tools/contributions.json; then
+            echo "No change in contributions, nothing to commit."
+            exit 0
+          fi
+          total=$(python -c "import json;print(json.load(open('tools/contributions.json'))['total'])")
+          git add assets tools/contributions.json
+          git commit -m "chore: refresh contributions sheet ($total in the last year)"
+          git push

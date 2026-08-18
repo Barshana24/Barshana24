@@ -2,8 +2,9 @@
   The sheets in assets/ are generated. Edit tools/build_panels.py and re-run it:
       python tools/build_panels.py
 
-  Sheet 08 draws the contribution heatmap from tools/contributions.json, which
-  is a cached snapshot. To bring it up to date:
+  Sheet 06 draws the contribution heatmap from tools/contributions.json, which
+  is a cached snapshot. A daily Actions workflow refreshes it, see
+  .github/workflows/refresh-contributions.yml. To do it by hand:
       python tools/fetch_contributions.py && python tools/build_panels.py
 
   Changes show up within about five minutes (raw.githubusercontent sends
@@ -18,14 +19,14 @@
     comes out more than twice the size. Both branches carry the same content.
   - Images point at raw.githubusercontent.com, not relative paths. GitHub
     rewrites relative paths to github.com/<owner>/<repo>/raw/..., which 404s.
-  - All nine panels live in two files per width, split only where real HTML
+  - All seven panels live in two files per width, split only where real HTML
     links are needed in between. Fewer requests keeps more of them served from
     the CDN edge rather than origin.
 -->
 
 <picture>
   <source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/Barshana24/Barshana24/main/assets/sheet-1-sm.svg">
-  <img src="https://raw.githubusercontent.com/Barshana24/Barshana24/main/assets/sheet-1.svg" width="100%" alt="Barshana Chatterjee, at Barshana24, Kolkata India. I build things that put AI to work on real data, usually on a local model. Most of what I ship runs fully offline: no API keys, and nothing leaves the machine it runs on. Operating principle: if a model can run on the machine that already holds the data, it should. Current focus: local-LLM tooling, agent benchmarks, RF and DSP. Signals: 14 public repositories, 6 shipped tools, 3 upstream pull requests, 1 publication. Stack weighted by use: Python, TypeScript, SQL, JavaScript, MATLAB, Ollama and local LLMs, FastAPI, React and Next.js, PostgreSQL, BigQuery. Pipeline: ingest, store, reason on a local model, serve, interface.">
+  <img src="https://raw.githubusercontent.com/Barshana24/Barshana24/main/assets/sheet-1.svg" width="100%" alt="Barshana Chatterjee, at Barshana24, Kolkata India. I build things that put AI to work on real data, usually on a local model. Open to collaboration. Stack weighted by use: Python, TypeScript, SQL, JavaScript, MATLAB, Ollama and local LLMs, FastAPI, React and Next.js, PostgreSQL, BigQuery. Pipeline: ingest, store, reason on a local model, serve, interface.">
 </picture>
 
 <p align="center">
