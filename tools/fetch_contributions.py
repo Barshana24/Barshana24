@@ -95,7 +95,8 @@ def main():
         "weeks": max(d["week"] for d in days) + 1,
         "days": [{k: d[k] for k in ("date", "count", "level", "row", "week")} for d in days],
     }
-    OUT.write_text(json.dumps(payload, indent=1), encoding="utf-8")
+    with open(OUT, "w", encoding="utf-8", newline="\n") as fh:
+        fh.write(json.dumps(payload, indent=1) + "\n")
     print(f"wrote {OUT.name}: {payload['total']} contributions across "
           f"{len(days)} days ({payload['first']} to {payload['last']})")
     print(f"  active days {payload['active_days']}, longest streak "
