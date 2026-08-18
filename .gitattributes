@@ -1,0 +1,11 @@
+# Normalise line endings in the repository. Every commit made from Windows
+# warned "LF will be replaced by CRLF"; settling it here fixes it for every
+# clone instead of relying on each machine's core.autocrlf.
+* text=auto eol=lf
+
+# The sheets and the contribution cache are build output from tools/, not
+# hand-written source. Marking them generated keeps them out of the repository's
+# language statistics and collapses them by default in diffs, so a rebuild does
+# not bury a real change under thousands of lines of regenerated SVG.
+assets/*.svg linguist-generated=true
+tools/contributions.json linguist-generated=true
