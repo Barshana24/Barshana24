@@ -248,7 +248,9 @@ def compose(name, panels, gap=GAP, title=""):
 # ---------------------------------------------------------------- sheet 01
 
 def p_header():
-    h = 250
+    # No stack chip line here and no location: the systems map lists the stack in
+    # full, and GitHub's own sidebar already shows Kolkata directly to the left.
+    h = 224
     b = [sheet_head("01", "IDENTITY", None)]
     b.append(mono(960, 34, 11, T4, "@Barshana24", anchor="end"))
     b.append(sans(40, 100, 40, T1, "BARSHANA CHATTERJEE", weight=700, ls=0.4))
@@ -257,11 +259,8 @@ def p_header():
              '<path d="M40 121h300"/><path d="M40 116v10"/><path d="M340 116v10"/></g>')
     b.append(sans(40, 154, 15, T3, "I build things that put AI to work on real data, "
                   "usually on a local model."))
-    b.append(mono(40, 186, 11, T4, f"PYTHON {DOT} TYPESCRIPT {DOT} FASTAPI {DOT} OLLAMA {DOT} "
-                  f"POSTGRES {DOT} NEXT.JS", ls=1.1))
-    b.append(f'<circle cx="44" cy="212" r="3.5" fill="{GR}"/>')
-    b.append(mono(58, 216, 10, T4, f"KOLKATA, IN  {DOT}  LOCAL-FIRST AI  {DOT}  "
-                  f"OPEN TO COLLABORATION", ls=1.5))
+    b.append(f'<circle cx="44" cy="190" r="3.5" fill="{GR}"/>')
+    b.append(mono(58, 194, 10, T4, f"LOCAL-FIRST AI  {DOT}  OPEN TO COLLABORATION", ls=1.5))
 
     vias = "".join(f'<circle cx="{x}" cy="{y}" r="2.5"/>'
                    for y in (84, 152) for x in range(726, 935, 16))
@@ -441,7 +440,7 @@ def p_work():
          mono(40, 76, 9.5, T5,
               f"SIX OF FOURTEEN PUBLIC REPOSITORIES  {DOT}  LINKS BELOW", ls=1.6)]
     return Panel("wrk", h, "\n    ".join(b),
-                 "Work manifest. Six selected projects of fourteen public repositories.")
+                 "Work manifest. Six selected projects.")
 
 
 class CardGrid(Panel):
@@ -604,34 +603,9 @@ def p_contrib():
                  glow=(880, -20, 380, 150, CY, 0.11))
 
 
-# ---------------------------------------------------------------- sheet 07
-
-BLOCK = [
-    [("DRAWN BY", "BARSHANA CHATTERJEE"), ("LOCATION", "KOLKATA, IN"), ("SHEETS", "07")],
-    [("DISCIPLINE", "AI SYSTEMS / RF"), ("STATUS", "OPEN TO COLLABORATION"), ("REVISION", "05")],
-]
-
-
-def p_titleblock():
-    h = 176
-    b = [sheet_head("07", "TITLE BLOCK", "$ contact --print")]
-    bx, by, bw, bh = 40, 62, 920, 84
-    cw, ch = bw // 3, bh // 2
-    b.append(f'<rect x="{bx}" y="{by}" width="{bw}" height="{bh}" rx="8" '
-             f'fill="{CARD_BG}" stroke="{BORDER}"/>')
-    for i in (1, 2):
-        b.append(f'<path d="M{bx + i * cw} {by}v{bh}" stroke="{BORDER}" stroke-width="1"/>')
-    b.append(f'<path d="M{bx} {by + ch}h{bw}" stroke="{BORDER}" stroke-width="1"/>')
-    for r, row in enumerate(BLOCK):
-        for c, (label, value) in enumerate(row):
-            x, y = bx + c * cw + 14, by + r * ch
-            b.append(mono(x, y + 17, 8, T6, label, ls=1.6))
-            b.append(mono(x, y + 33, 10.5, T2, value, ls=0.6))
-
-    aria = "Title block. " + ". ".join(f"{k}: {v}" for row in BLOCK for k, v in row) + "."
-    return Panel("ttl", h, "\n    ".join(b), aria, glow=(500, 180, 520, 150, VI, 0.10),
-                 corner_marks=True)
-
+# The title block sheet was removed as redundant: it repeated the name from the
+# identity sheet, the location from GitHub's own sidebar, and the availability
+# line from the identity sheet's status row.
 
 # ================================================================ narrow set
 # Same content and palette, laid out in a single column on a 480 canvas. Two
@@ -655,12 +629,11 @@ def n_header():
                    "I build things that put AI to work on real data, usually on a local model.",
                    NI, 19)
     b.append(tag)
-    b.append(mono(NM, y + 14, 8.5, T4, f"PYTHON {DOT} TYPESCRIPT {DOT} FASTAPI", ls=1.0))
-    b.append(mono(NM, y + 30, 8.5, T4, f"OLLAMA {DOT} POSTGRES {DOT} NEXT.JS", ls=1.0))
-    b.append(f'<circle cx="{NM + 4}" cy="{y + 52}" r="3.2" fill="{GR}"/>')
-    b.append(mono(NM + 16, y + 56, 8.5, T4, "KOLKATA, IN", ls=1.3))
-    b.append(mono(NM, y + 74, 8.5, GR, "&gt; open to collaboration", ls=1.1))
-    h = y + 96
+    # Same trim as the wide header: no stack chips, no location.
+    b.append(f'<circle cx="{NM + 4}" cy="{y + 16}" r="3.2" fill="{GR}"/>')
+    b.append(mono(NM + 16, y + 20, 8.5, T4, "LOCAL-FIRST AI", ls=1.3))
+    b.append(mono(NM, y + 40, 8.5, GR, "&gt; open to collaboration", ls=1.1))
+    h = y + 62
 
     # small waveguide mark, kept as a signature but scaled to the narrow column
     vias = "".join(f'<circle cx="{x}" cy="{yy}" r="2" fill="{BG}" stroke="{CY}" '
@@ -740,7 +713,7 @@ def n_work():
     b = [n_head("04", "WORK MANIFEST", "$ ls --selected"), rule(NM, 44, NW - NM),
          mono(NM, 66, 8.5, T5, f"SIX OF FOURTEEN REPOS  {DOT}  LINKS BELOW", ls=1.3)]
     return Panel("nwrk", 84, "\n    ".join(b),
-                 "Work manifest. Six selected projects of fourteen public repositories.",
+                 "Work manifest. Six selected projects.",
                  w=NW)
 
 
@@ -860,27 +833,6 @@ def n_contrib():
                  glow=(NW - 40, -20, 220, 130, CY, 0.11))
 
 
-def n_titleblock():
-    b = [n_head("07", "TITLE BLOCK", "$ contact")]
-    fields = [f for row in BLOCK for f in row]
-    cw, ch = NI // 2, 40
-    by = 46
-    b.append(f'<rect x="{NM}" y="{by}" width="{NI}" height="{ch * 3}" rx="8" '
-             f'fill="{CARD_BG}" stroke="{BORDER}"/>')
-    b.append(f'<path d="M{NM + cw} {by}v{ch * 3}" stroke="{BORDER}" stroke-width="1"/>')
-    for r in (1, 2):
-        b.append(f'<path d="M{NM} {by + r * ch}h{NI}" stroke="{BORDER}" stroke-width="1"/>')
-    order = [fields[0], fields[3], fields[1], fields[4], fields[2], fields[5]]
-    for i, (label, value) in enumerate(order):
-        x = NM + (i % 2) * cw + 11
-        y = by + (i // 2) * ch
-        b.append(mono(x, y + 15, 7, T6, label, ls=1.3))
-        b.append(mono(x, y + 30, 8.5, T2, value, ls=0.4))
-    aria = "Title block. " + ". ".join(f"{k}: {v}" for k, v in fields) + "."
-    return Panel("nttl", by + ch * 3 + 16, "\n    ".join(b), aria, w=NW,
-                 glow=(NW // 2, NW, 260, 120, VI, 0.10), corner_marks=True)
-
-
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
     print("writing panels to", OUT)
@@ -890,12 +842,12 @@ if __name__ == "__main__":
     compose("sheet-1.svg", [p_header(), p_stack(), p_pipeline()],
             title="Barshana Chatterjee")
     compose("sheet-2.svg", [p_work(), CardGrid(), p_upstream()] +
-            ([p_contrib()] if CONTRIB else []) + [p_titleblock()],
-            title="Work, upstream, contributions, contact")
+            ([p_contrib()] if CONTRIB else []),
+            title="Work, upstream, contributions")
     # Phone variants, selected by the <picture> media query in the README.
     compose("sheet-1-sm.svg", [n_header(), n_stack(), n_pipeline()],
             gap=16, title="Barshana Chatterjee")
     compose("sheet-2-sm.svg", [n_work(), NarrowCardGrid(), n_upstream()] +
-            ([n_contrib()] if CONTRIB else []) + [n_titleblock()],
-            gap=16, title="Work, upstream, contributions, contact")
+            ([n_contrib()] if CONTRIB else []),
+            gap=16, title="Work, upstream, contributions")
     print("done")

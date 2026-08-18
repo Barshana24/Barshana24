@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 1814" width="480" height="1814" role="img"
-     aria-label="Work manifest. Six selected projects of fourteen public repositories. technical-doc-generator, Python. Point it at a codebase and get back a README, an API reference, a UML diagram, and inline comments. Runs fully offline on a local model. ai-code-reviewer, TypeScript. Scores code across ten quality dimensions and exports a PDF report. No cloud API keys required, so nothing you review is uploaded. Token_minimiser, JavaScript. Chrome extension that shrinks prompts before they reach ChatGPT, Claude, or Gemini. Same instructions, 15-45% fewer tokens, works in any text box. FunellQ, TypeScript. Funnel analytics on Google's public GA4 e-commerce dataset. Finds where shoppers drop off, then sizes the biggest leak in real revenue. Siglo-GTM-tool, Python. GTM intelligence platform that scores signals, member targets, and open opportunities into a ranked list of business development plays. EduBot, TypeScript. Study assistant for engineering students in their own language, with quizzes, flashcards, and interview prep. Upstream. AOBench is a role-aware, permission-enforced benchmark for AI agents that operate HPC systems. I work on its command line interface. Pull requests authored: 43, add --json to report json and compare runs; 47, add aobench list coverage; 50, pay down mypy --strict debt in cli/. Contributions in the last 12 months as of 2026-08-18: 253 contributions across 130 active days, longest streak 8 days, busiest day 16 contributions. Title block. DRAWN BY: BARSHANA CHATTERJEE. LOCATION: KOLKATA, IN. SHEETS: 07. DISCIPLINE: AI SYSTEMS / RF. STATUS: OPEN TO COLLABORATION. REVISION: 05." font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">
-  <title>Work, upstream, contributions, contact</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 1616" width="480" height="1616" role="img"
+     aria-label="Work manifest. Six selected projects. technical-doc-generator, Python. Point it at a codebase and get back a README, an API reference, a UML diagram, and inline comments. Runs fully offline on a local model. ai-code-reviewer, TypeScript. Scores code across ten quality dimensions and exports a PDF report. No cloud API keys required, so nothing you review is uploaded. Token_minimiser, JavaScript. Chrome extension that shrinks prompts before they reach ChatGPT, Claude, or Gemini. Same instructions, 15-45% fewer tokens, works in any text box. FunellQ, TypeScript. Funnel analytics on Google's public GA4 e-commerce dataset. Finds where shoppers drop off, then sizes the biggest leak in real revenue. Siglo-GTM-tool, Python. GTM intelligence platform that scores signals, member targets, and open opportunities into a ranked list of business development plays. EduBot, TypeScript. Study assistant for engineering students in their own language, with quizzes, flashcards, and interview prep. Upstream. AOBench is a role-aware, permission-enforced benchmark for AI agents that operate HPC systems. I work on its command line interface. Pull requests authored: 43, add --json to report json and compare runs; 47, add aobench list coverage; 50, pay down mypy --strict debt in cli/. Contributions in the last 12 months as of 2026-08-18: 253 contributions across 130 active days, longest streak 8 days, busiest day 16 contributions." font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">
+  <title>Work, upstream, contributions</title>
   <defs>
     <pattern id="gf" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#111926" stroke-width="1"/></pattern>
     <pattern id="gm" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M100 0H0V100" fill="none" stroke="#18212f" stroke-width="1"/></pattern>
@@ -24,9 +24,6 @@
     <clipPath id="cncon"><rect x="0" y="0" width="480" height="283" rx="14"/></clipPath>
     <radialGradient id="gncon" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#22d3ee" stop-opacity="0.11"/><stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/></radialGradient>
     <linearGradient id="hncon" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#22d3ee" stop-opacity="0"/><stop offset="24%" stop-color="#22d3ee" stop-opacity="0.7"/><stop offset="60%" stop-color="#a78bfa" stop-opacity="0.5"/><stop offset="90%" stop-color="#34d399" stop-opacity="0.42"/><stop offset="100%" stop-color="#34d399" stop-opacity="0"/></linearGradient>
-    <clipPath id="cnttl"><rect x="0" y="0" width="480" height="182" rx="14"/></clipPath>
-    <radialGradient id="gnttl" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#a78bfa" stop-opacity="0.1"/><stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/></radialGradient>
-    <linearGradient id="hnttl" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#22d3ee" stop-opacity="0"/><stop offset="24%" stop-color="#22d3ee" stop-opacity="0.7"/><stop offset="60%" stop-color="#a78bfa" stop-opacity="0.5"/><stop offset="90%" stop-color="#34d399" stop-opacity="0.42"/><stop offset="100%" stop-color="#34d399" stop-opacity="0"/></linearGradient>
   </defs>
   <g transform="translate(0 0)">
     <rect x="0" y="0" width="480" height="84" rx="14" fill="#0a0e14"/>
@@ -588,35 +585,5 @@
     <text x="240" y="256.9" font-size="9.2" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.2">BUSIEST DAY</text>
     <text x="240" y="280.9" font-size="20.7" fill="#e8eef5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif" font-weight="700">16</text>
     <rect x="240" y="287.9" width="30" height="2" rx="1" fill="#fbbf24"/>
-  </g>
-  <g transform="translate(0 1632)">
-    <rect x="0" y="0" width="480" height="182" rx="14" fill="#0a0e14"/>
-    <g clip-path="url(#cnttl)">
-      <rect width="480" height="182" fill="url(#gf)"/>
-      
-      <ellipse cx="240" cy="480" rx="260" ry="120" fill="url(#gnttl)"/>
-      <rect x="0" y="180" width="480" height="2" fill="url(#hnttl)"/>
-    </g>
-    <g stroke="#22d3ee" stroke-width="1.2" fill="none" opacity="0.34" stroke-linecap="square"><path d="M18 34V18h16"/><path d="M446 18h16v16"/><path d="M462 148v16h-16"/><path d="M34 164H18v-16"/></g>
-    <rect x="22" y="24" width="6" height="6" fill="#22d3ee"/>
-    <text x="40" y="30" font-size="9.8" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.6">SHEET 07 / TITLE BLOCK</text>
-    <text x="446" y="30" font-size="9.8" fill="#22d3ee" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end" opacity="0.72">$ contact</text>
-    <rect x="452" y="20" width="2" height="12" fill="#22d3ee"/>
-    <rect x="22" y="46" width="436" height="120" rx="8" fill="#0b1017" stroke="#1d2634"/>
-    <path d="M240 46v120" stroke="#1d2634" stroke-width="1"/>
-    <path d="M22 86h436" stroke="#1d2634" stroke-width="1"/>
-    <path d="M22 126h436" stroke="#1d2634" stroke-width="1"/>
-    <text x="33" y="61" font-size="8.0" fill="#4b5563" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">DRAWN BY</text>
-    <text x="33" y="76" font-size="9.8" fill="#c9d1d9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.4">BARSHANA CHATTERJEE</text>
-    <text x="251" y="61" font-size="8.0" fill="#4b5563" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">DISCIPLINE</text>
-    <text x="251" y="76" font-size="9.8" fill="#c9d1d9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.4">AI SYSTEMS / RF</text>
-    <text x="33" y="101" font-size="8.0" fill="#4b5563" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">LOCATION</text>
-    <text x="33" y="116" font-size="9.8" fill="#c9d1d9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.4">KOLKATA, IN</text>
-    <text x="251" y="101" font-size="8.0" fill="#4b5563" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">STATUS</text>
-    <text x="251" y="116" font-size="9.8" fill="#c9d1d9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.4">OPEN TO COLLABORATION</text>
-    <text x="33" y="141" font-size="8.0" fill="#4b5563" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">SHEETS</text>
-    <text x="33" y="156" font-size="9.8" fill="#c9d1d9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.4">07</text>
-    <text x="251" y="141" font-size="8.0" fill="#4b5563" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">REVISION</text>
-    <text x="251" y="156" font-size="9.8" fill="#c9d1d9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.4">05</text>
   </g>
 </svg>
