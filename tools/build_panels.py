@@ -238,7 +238,10 @@ def compose(name, panels, gap=GAP, title=""):
         y += p.h + gap
     out.append("</svg>\n")
 
-    (OUT / name).write_text("".join(out), encoding="utf-8")
+    # newline="\n" so the SVGs are written LF even on Windows. Text mode would
+    # otherwise emit CRLF and leave git renormalising every file on commit.
+    with open(OUT / name, "w", encoding="utf-8", newline="\n") as fh:
+        fh.write("".join(out))
     print(f"  {name}  ({width}x{total})")
 
 
