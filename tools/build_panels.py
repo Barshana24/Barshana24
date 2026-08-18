@@ -22,12 +22,21 @@ Two constraints shaped this file, both worth knowing before you change it.
    frozen at its start value.
 """
 
+import textwrap
 from pathlib import Path
 
 OUT = Path(__file__).resolve().parent.parent / "assets"
 
 W = 1000
 GAP = 22
+
+# Narrow canvas for phones. A 1000-wide sheet scaled into a ~390px phone column
+# renders 13px body text at 5px, so the README serves these instead through a
+# <picture> media query. Authoring narrower means the same absolute type sizes
+# come out proportionally much larger after scaling.
+NW = 480
+NM = 22
+NI = NW - NM * 2
 
 BG = "#0a0e14"
 CARD_BG = "#0b1017"
@@ -52,7 +61,10 @@ AM = "#fbbf24"
 SANS = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif"
 MONO = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
 
-DOT = "&#183;"
+# A literal middot, not the &#183; entity. Copy that runs through wrap()/lines()
+# gets escaped on the way out, which would turn an entity into visible
+# "&#183;" text. A real character survives escaping untouched.
+DOT = "·"
 
 # Panels are 1000 units wide but GitHub scales them down to the reader's
 # content column, which on a phone is under 400px. Sizes below are authored at
@@ -92,17 +104,36 @@ def rule(x1, y, x2, color=RULE):
     return f'<path d="M{x1} {y}H{x2}" stroke="{color}" stroke-width="1"/>'
 
 
-def sheet_head(num, name, cmd, y=34, w=W, caret=True):
+def sheet_head(num, name, cmd, y=34, w=W, caret=True, x=40, size=10, ls=2.2):
     parts = [
-        f'<rect x="40" y="{y - 6}" width="6" height="6" fill="{CY}"/>',
-        mono(58, y, 10, T5, f"SHEET {num} / {name}", ls=2.2),
+        f'<rect x="{x}" y="{y - 6}" width="6" height="6" fill="{CY}"/>',
+        mono(x + 18, y, size, T5, f"SHEET {num} / {name}", ls=ls),
     ]
     if cmd:
-        end = w - 52 if caret else w - 40
-        parts.append(mono(end, y, 10, CY, esc(cmd), anchor="end", opacity=0.72))
+        end = w - x - 12 if caret else w - x
+        parts.append(mono(end, y, size, CY, esc(cmd), anchor="end", opacity=0.72))
         if caret:
-            parts.append(f'<rect x="{w - 46}" y="{y - 10}" width="2" height="12" fill="{CY}"/>')
+            parts.append(f'<rect x="{w - x - 6}" y="{y - 10}" width="2" height="12" fill="{CY}"/>')
     return "\n    ".join(parts)
+
+
+def wrap(text, max_px, size, is_mono=False):
+    """Split text to fit max_px, estimating advance width from the font size.
+
+    The narrow layouts wrap a lot of copy and hand-wrapping every string is how
+    lines end up overlapping the next column, so estimate instead. The factors
+    are deliberately pessimistic.
+    """
+    per_char = _size(size) * (0.62 if is_mono else 0.55)
+    return textwrap.wrap(text, width=max(8, int(max_px / per_char))) or [""]
+
+
+def lines(x, y, size, fill, text, max_px, step, is_mono=False, **kw):
+    """Wrap text and lay it out downward. Returns (markup, y after last line)."""
+    wrapped = wrap(text, max_px, size, is_mono)
+    f = mono if is_mono else sans
+    out = [f(x, y + i * step, size, fill, esc(ln), **kw) for i, ln in enumerate(wrapped)]
+    return "\n    ".join(out), y + len(wrapped) * step
 
 
 def brackets(w, h, inset=18, arm=16, color=CY, op=0.34):
@@ -568,6 +599,268 @@ def p_titleblock():
                  corner_marks=True)
 
 
+# ================================================================ narrow set
+# Same content and palette, laid out in a single column on a 480 canvas. Two
+# column blocks stack, and the pipeline runs top to bottom instead of left to
+# right, because five boxes side by side at phone width is unreadable.
+
+
+def n_head(num, name, cmd=None):
+    return sheet_head(num, name, cmd, y=30, w=NW, x=NM, size=8.5, ls=1.6)
+
+
+def n_header():
+    b = [n_head("01", "IDENTITY"),
+         # right-anchored short of the margin so it clears the corner bracket
+         mono(NW - 42, 30, 8.5, T4, "@Barshana24", anchor="end"),
+         sans(NM, 74, 24, T1, "BARSHANA", weight=700, ls=0.4),
+         sans(NM, 104, 24, T1, "CHATTERJEE", weight=700, ls=0.4),
+         '<g stroke="#243044" stroke-width="1">'
+         f'<path d="M{NM} 120h150"/><path d="M{NM} 115v10"/><path d="M{NM + 150} 115v10"/></g>']
+    tag, y = lines(NM, 148, 12, T3,
+                   "I build things that put AI to work on real data, usually on a local model.",
+                   NI, 19)
+    b.append(tag)
+    b.append(mono(NM, y + 14, 8.5, T4, f"PYTHON {DOT} TYPESCRIPT {DOT} FASTAPI", ls=1.0))
+    b.append(mono(NM, y + 30, 8.5, T4, f"OLLAMA {DOT} POSTGRES {DOT} NEXT.JS", ls=1.0))
+    b.append(f'<circle cx="{NM + 4}" cy="{y + 52}" r="3.2" fill="{GR}"/>')
+    b.append(mono(NM + 16, y + 56, 8.5, T4, "KOLKATA, IN", ls=1.3))
+    b.append(mono(NM, y + 74, 8.5, GR, "&gt; open to collaboration", ls=1.1))
+    h = y + 96
+
+    # small waveguide mark, kept as a signature but scaled to the narrow column
+    vias = "".join(f'<circle cx="{x}" cy="{yy}" r="2" fill="{BG}" stroke="{CY}" '
+                   f'stroke-width="0.9" opacity="0.5"/>'
+                   for yy in (60, 96) for x in range(NW - 130, NW - 24, 15))
+    b.append(f'<g opacity="0.85">{vias}'
+             f'<path d="M{NW - 130} 78 q11 -13 22 0 q11 13 22 0 q11 -13 22 0 q11 13 22 0" '
+             f'fill="none" stroke="{CY}" stroke-width="1.3" stroke-dasharray="5 8" opacity="0.8"/>'
+             f'{mono(NW - 130, 116, 7.5, T6, "SIW / TE10", ls=1.3)}</g>')
+
+    aria = ("Barshana Chatterjee, at Barshana24, Kolkata India. I build things that put AI "
+            "to work on real data, usually on a local model. Open to collaboration.")
+    return Panel("nhdr", h, "\n    ".join(b), aria, w=NW, major_grid=True,
+                 glow=(NW - 40, 20, 200, 150, CY, 0.16), corner_marks=True)
+
+
+def n_brief():
+    b = [n_head("02", "BRIEF", "$ whoami"), rule(NM, 44, NW - NM)]
+    body, y = lines(NM, 70, 11.5, T2, " ".join(BIO), NI, 19)
+    b.append(body)
+
+    y += 16
+    b.append(mono(NM, y, 8.5, T5, "OPERATING PRINCIPLE", ls=1.6))
+    b.append(f'<rect x="{NM}" y="{y + 10}" width="2" height="46" rx="1" fill="{CY}" opacity="0.7"/>')
+    pr, y2 = lines(NM + 14, y + 26, 12.5, T1,
+                   "If a model can run on the machine that already holds the data, it should.",
+                   NI - 14, 19)
+    b.append(pr)
+
+    y = y2 + 20
+    b.append(mono(NM, y, 8.5, T5, "CURRENT FOCUS", ls=1.6))
+    y += 22
+    for col, label, desc in FOCUS:
+        b.append(f'<rect x="{NM}" y="{y - 7}" width="5" height="5" fill="{col}"/>')
+        b.append(mono(NM + 14, y, 9, col, label, ls=1.1))
+        d, y = lines(NM + 14, y + 16, 10.5, T4, desc, NI - 14, 16)
+        b.append(d)
+        y += 12
+
+    aria = ("Brief. " + " ".join(BIO) + " Operating principle: if a model can run on the "
+            "machine that already holds the data, it should. Current focus: "
+            + "; ".join(f"{a}, {c}" for _, a, c in FOCUS) + ".")
+    return Panel("nbrf", int(y + 10), "\n    ".join(b), aria, w=NW,
+                 glow=(60, NW - 20, 220, 130, VI, 0.12))
+
+
+def n_signals():
+    b = [n_head("03", "SIGNALS", "$ stat")]
+    tw, th, g = (NI - 14) // 2, 66, 14
+    for i, (label, value, col) in enumerate(TILES):
+        x = NM + (i % 2) * (tw + g)
+        y = 50 + (i // 2) * (th + g)
+        b.append(f'<rect x="{x}" y="{y}" width="{tw}" height="{th}" rx="9" '
+                 f'fill="{CARD_BG}" stroke="{BORDER}"/>')
+        b.append(mono(x + 12, y + 20, 8, T5, label, ls=1.3))
+        b.append(sans(x + 12, y + 50, 22, T1, value, weight=700))
+        b.append(f'<rect x="{x + 12}" y="{y + 57}" width="42" height="2" rx="1" fill="{col}"/>')
+    h = 50 + 2 * (th + g) + 6
+    aria = "Signals. " + ", ".join(f"{l}: {v}" for l, v, _ in TILES) + "."
+    return Panel("nsig", h, "\n    ".join(b), aria, w=NW)
+
+
+def n_stack():
+    b = [n_head("04", "SYSTEMS MAP", "$ stack -w"), rule(NM, 44, NW - NM)]
+    y = 68
+    for title, items in (("LANGUAGES", LANGS), ("RUNTIME / DATA", RUNTIME)):
+        b.append(mono(NM, y, 8.5, "#5a6472", title, ls=1.6))
+        y += 24
+        for nm, val, color in items:
+            b.append(f'<circle cx="{NM + 4}" cy="{y - 4}" r="3.2" fill="{color}"/>')
+            b.append(sans(NM + 16, y, 11, T2, esc(nm)))
+            b.append(mono(NW - NM, y, 8.5, T4, str(val), anchor="end"))
+            b.append(f'<rect x="{NM}" y="{y + 8}" width="{NI}" height="4" rx="2" fill="{INSET}"/>')
+            b.append(f'<rect x="{NM}" y="{y + 8}" width="{round(NI * val / 100)}" height="4" '
+                     f'rx="2" fill="{color}"/>')
+            y += 32
+        y += 10
+
+    b.append(rule(NM, y - 4, NW - NM))
+    note, y = lines(NM, y + 18, 8.5, T5,
+                    f"ALSO  {DOT}  CHROME EXTENSIONS  {DOT}  CANVAS 2D  {DOT}  "
+                    f"PDF REPORT PIPELINES  {DOT}  CISCO PACKET TRACER",
+                    NI, 14, is_mono=True, ls=1.2)
+    b.append(note)
+    aria = ("Systems map, weighted by use. Languages: "
+            + ", ".join(f"{n} {v}" for n, v, _ in LANGS)
+            + ". Runtime and data: " + ", ".join(f"{n} {v}" for n, v, _ in RUNTIME) + ".")
+    return Panel("nstk", int(y + 8), "\n    ".join(b), aria, w=NW,
+                 glow=(NW // 2, NW, 260, 120, CY, 0.11))
+
+
+def n_pipeline():
+    b = [n_head("05", "PIPELINE", "$ trace"), rule(NM, 44, NW - NM),
+         mono(NM, 66, 8.5, T5, "HOW A PROJECT GETS BUILT, TOP TO BOTTOM", ls=1.3)]
+    y, bh, g = 84, 52, 22
+    for i, (num, nm, tech, hero) in enumerate(STAGES):
+        b.append(f'<rect x="{NM}" y="{y}" width="{NI}" height="{bh}" rx="9" '
+                 f'fill="{CARD_BG}" stroke="{VI if hero else BORDER}"/>')
+        b.append(mono(NM + 13, y + 20, 8.5, VI if hero else CY, num, ls=1.2))
+        b.append(sans(NM + 44, y + 21, 12, T1, nm, weight=600))
+        b.append(mono(NM + 44, y + 39, 9, T4, tech))
+        y += bh
+        if i < len(STAGES) - 1:
+            cx = NM + NI // 2
+            b.append(f'<path d="M{cx} {y + 3}v{g - 12}" stroke="#2b3a52" stroke-width="1"/>')
+            b.append(f'<path d="M{cx - 3.5} {y + g - 9}l3.5 6l3.5 -6z" fill="#3d4f6b"/>')
+            y += g
+
+    b.append(rule(NM, y + 18, NW - NM))
+    b.append(f'<circle cx="{NM + 4}" cy="{y + 40}" r="3.2" fill="{GR}"/>')
+    note, y2 = lines(NM + 16, y + 44, 8.5, GR,
+                     f"STEP 03 RUNS LOCALLY  {DOT}  NO KEYS, NO DATA LEAVING THE BOX",
+                     NI - 16, 14, is_mono=True, ls=1.2)
+    b.append(note)
+    aria = ("Pipeline, how a project gets built: "
+            + ", then ".join(f"{n} using {t}" for _, n, t, _ in STAGES)
+            + ". Step 03 runs locally, so no keys and no data leave the box.")
+    return Panel("npip", int(y2 + 8), "\n    ".join(b), aria, w=NW,
+                 glow=(NW // 2, -20, 240, 130, VI, 0.10))
+
+
+def n_work():
+    b = [n_head("06", "WORK MANIFEST", "$ ls --selected"), rule(NM, 44, NW - NM),
+         mono(NM, 66, 8.5, T5, f"SIX OF FOURTEEN REPOS  {DOT}  LINKS BELOW", ls=1.3)]
+    return Panel("nwrk", 84, "\n    ".join(b),
+                 "Work manifest. Six selected projects of fourteen public repositories.",
+                 w=NW)
+
+
+NCARD_W = NI
+NCARD_GAP = 16
+
+
+class NarrowCardGrid(Panel):
+    """Project cards in one column, sized so the body copy stays readable."""
+
+    def __init__(self):
+        self.layouts = []
+        y = 0
+        for i, c in enumerate(CARDS):
+            body, end = self._card(c, i)
+            self.layouts.append((y, body))
+            y += end + NCARD_GAP
+        aria = " ".join(f"{c['slug']}, {c['lang']}. " + " ".join(c["desc"]) for c in CARDS)
+        super().__init__("ngrid", y - NCARD_GAP, "", aria, w=NW)
+
+    def _card(self, c, i):
+        w, u = NCARD_W, f"ncd{i}"
+        b = [sans(20, 30, 13, T1, esc(c["slug"]), weight=700),
+             f'<rect x="20" y="38" width="24" height="2" rx="1" fill="{c["color"]}" opacity="0.6"/>',
+             mono(w - 26, 29, 8.5, T4, c["lang"], anchor="end"),
+             f'<circle cx="{w - 16}" cy="26" r="3.2" fill="{c["color"]}"/>']
+        desc, y = lines(20, 60, 10.5, T3, " ".join(c["desc"]), w - 44, 17)
+        b.append(desc)
+        b.append(rule(20, y + 4, w - 20))
+        b.append(mono(20, y + 22, 8, T5, f"  {DOT}  ".join(c["meta"]), ls=1.1))
+        h = int(y + 34)
+        chrome = [f'<rect x="0" y="0" width="{w}" height="{h}" rx="11" fill="{CARD_BG}"/>',
+                  f'<g clip-path="url(#c{u})">',
+                  f'  <rect width="{w}" height="{h}" fill="url(#gf)"/>',
+                  f'  <rect x="0" y="0" width="3" height="{h}" fill="{c["color"]}" opacity="0.85"/>',
+                  f'  <rect x="0" y="{h - 2}" width="{w}" height="2" fill="url(#h{u})"/>',
+                  '</g>',
+                  f'<rect x="0.5" y="0.5" width="{w - 1}" height="{h - 1}" rx="11" '
+                  f'fill="none" stroke="{BORDER}"/>']
+        self._heights = getattr(self, "_heights", {})
+        self._heights[i] = h
+        return "\n      ".join(chrome + b), h
+
+    def defs(self):
+        d = []
+        for i, c in enumerate(CARDS):
+            h = self._heights[i]
+            d.append(f'<clipPath id="cncd{i}"><rect x="0" y="0" width="{NCARD_W}" '
+                     f'height="{h}" rx="11"/></clipPath>')
+            d.append(f'<linearGradient id="hncd{i}" x1="0" y1="0" x2="1" y2="0">'
+                     f'<stop offset="0%" stop-color="{c["color"]}" stop-opacity="0.75"/>'
+                     f'<stop offset="100%" stop-color="{c["color"]}" stop-opacity="0"/>'
+                     f'</linearGradient>')
+        return d
+
+    def render(self, y):
+        out = [f'  <g transform="translate({NM} {y})">']
+        for cy, body in self.layouts:
+            out.append(f'    <g transform="translate(0 {cy})">\n      {body}\n    </g>')
+        out.append("  </g>\n")
+        return "\n".join(out)
+
+
+def n_upstream():
+    b = [n_head("07", "UPSTREAM", "$ git log"), rule(NM, 44, NW - NM)]
+    body, y = lines(NM, 70, 11.5, T2,
+                    "AOBench is a role-aware, permission-enforced benchmark for AI agents "
+                    "that operate HPC systems: SLURM, telemetry, RBAC. I work on its CLI.",
+                    NI, 18)
+    b.append(body)
+    y += 18
+    b.append(mono(NM, y, 8.5, T5, "PULL REQUESTS AUTHORED", ls=1.5))
+    y += 22
+    for num, title, col in PRS:
+        b.append(f'<circle cx="{NM + 4}" cy="{y - 4}" r="3.2" fill="{col}"/>')
+        b.append(mono(NM + 16, y, 9.5, col, f"#{num}"))
+        t, y = lines(NM + 52, y, 10.5, T2, title, NI - 52, 16)
+        b.append(t)
+        y += 10
+    b.append(mono(NM, y + 8, 8, T5, "88 TASKS / 29 ENVIRONMENTS", ls=1.2))
+    aria = ("Upstream. AOBench is a role-aware, permission-enforced benchmark for AI agents "
+            "that operate HPC systems. I work on its command line interface. Pull requests "
+            "authored: " + "; ".join(f"{n}, {t}" for n, t, _ in PRS) + ".")
+    return Panel("nups", int(y + 26), "\n    ".join(b), aria, w=NW,
+                 glow=(NW - 40, NW, 220, 130, GR, 0.10))
+
+
+def n_titleblock():
+    b = [n_head("08", "TITLE BLOCK", "$ contact")]
+    fields = [f for row in BLOCK for f in row]
+    cw, ch = NI // 2, 40
+    by = 46
+    b.append(f'<rect x="{NM}" y="{by}" width="{NI}" height="{ch * 3}" rx="8" '
+             f'fill="{CARD_BG}" stroke="{BORDER}"/>')
+    b.append(f'<path d="M{NM + cw} {by}v{ch * 3}" stroke="{BORDER}" stroke-width="1"/>')
+    for r in (1, 2):
+        b.append(f'<path d="M{NM} {by + r * ch}h{NI}" stroke="{BORDER}" stroke-width="1"/>')
+    order = [fields[0], fields[3], fields[1], fields[4], fields[2], fields[5]]
+    for i, (label, value) in enumerate(order):
+        x = NM + (i % 2) * cw + 11
+        y = by + (i // 2) * ch
+        b.append(mono(x, y + 15, 7, T6, label, ls=1.3))
+        b.append(mono(x, y + 30, 8.5, T2, value, ls=0.4))
+    aria = "Title block. " + ". ".join(f"{k}: {v}" for k, v in fields) + "."
+    return Panel("nttl", by + ch * 3 + 16, "\n    ".join(b), aria, w=NW,
+                 glow=(NW // 2, NW, 260, 120, VI, 0.10), corner_marks=True)
+
+
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
     print("writing panels to", OUT)
@@ -578,4 +871,9 @@ if __name__ == "__main__":
             title="Barshana Chatterjee")
     compose("sheet-2.svg", [p_work(), CardGrid(), p_upstream(), p_titleblock()],
             title="Work, upstream, contact")
+    # Phone variants, selected by the <picture> media query in the README.
+    compose("sheet-1-sm.svg", [n_header(), n_brief(), n_signals(), n_stack(), n_pipeline()],
+            gap=16, title="Barshana Chatterjee")
+    compose("sheet-2-sm.svg", [n_work(), NarrowCardGrid(), n_upstream(), n_titleblock()],
+            gap=16, title="Work, upstream, contact")
     print("done")

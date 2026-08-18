@@ -38,7 +38,7 @@
     <text x="948" y="34" font-size="11.5" fill="#22d3ee" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end" opacity="0.72">$ ls ./projects --selected</text>
     <rect x="954" y="24" width="2" height="12" fill="#22d3ee"/>
     <path d="M40 50H960" stroke="#19212e" stroke-width="1"/>
-    <text x="40" y="76" font-size="10.9" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.6">SIX OF FOURTEEN PUBLIC REPOSITORIES  &#183;  LINKS BELOW</text>
+    <text x="40" y="76" font-size="10.9" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.6">SIX OF FOURTEEN PUBLIC REPOSITORIES  ·  LINKS BELOW</text>
   </g>
   <g transform="translate(0 120)">
     <g transform="translate(0 0)">
@@ -57,7 +57,7 @@
       <text x="24" y="97" font-size="13.2" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">API reference, a UML diagram, and inline comments.</text>
       <text x="24" y="116" font-size="13.2" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">Runs fully offline on a local model.</text>
       <path d="M24 144H464" stroke="#19212e" stroke-width="1"/>
-      <text x="24" y="163" font-size="9.8" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">OFFLINE  &#183;  OLLAMA  &#183;  DOCS</text>
+      <text x="24" y="163" font-size="9.8" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">OFFLINE  ·  OLLAMA  ·  DOCS</text>
     </g>
     <g transform="translate(512 0)">
       <rect x="0" y="0" width="488" height="172" rx="12" fill="#0b1017"/>
@@ -75,7 +75,7 @@
       <text x="24" y="97" font-size="13.2" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">exports a PDF report. No cloud API keys required,</text>
       <text x="24" y="116" font-size="13.2" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">so nothing you review is uploaded.</text>
       <path d="M24 144H464" stroke="#19212e" stroke-width="1"/>
-      <text x="24" y="163" font-size="9.8" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">OFFLINE  &#183;  FASTAPI  &#183;  PDF</text>
+      <text x="24" y="163" font-size="9.8" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">OFFLINE  ·  FASTAPI  ·  PDF</text>
     </g>
     <g transform="translate(0 196)">
       <rect x="0" y="0" width="488" height="172" rx="12" fill="#0b1017"/>
@@ -93,7 +93,7 @@
       <text x="24" y="97" font-size="13.2" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">reach ChatGPT, Claude, or Gemini. Same instructions,</text>
       <text x="24" y="116" font-size="13.2" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">15-45% fewer tokens, works in any text box.</text>
       <path d="M24 144H464" stroke="#19212e" stroke-width="1"/>
-      <text x="24" y="163" font-size="9.8" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">MIT  &#183;  EXTENSION  &#183;  OFFLINE</text>
+      <text x="24" y="163" font-size="9.8" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">MIT  ·  EXTENSION  ·  OFFLINE</text>
     </g>
     <g transform="translate(512 196)">
       <rect x="0" y="0" width="488" height="172" rx="12" fill="#0b1017"/>
@@ -111,7 +111,7 @@
       <text x="24" y="97" font-size="13.2" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">dataset. Finds where shoppers drop off, then sizes</text>
       <text x="24" y="116" font-size="13.2" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">the biggest leak in real revenue.</text>
       <path d="M24 144H464" stroke="#19212e" stroke-width="1"/>
-      <text x="24" y="163" font-size="9.8" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">BIGQUERY  &#183;  ANALYTICS</text>
+      <text x="24" y="163" font-size="9.8" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">BIGQUERY  ·  ANALYTICS</text>
     </g>
     <g transform="translate(0 392)">
       <rect x="0" y="0" width="488" height="172" rx="12" fill="#0b1017"/>
@@ -129,7 +129,7 @@
       <text x="24" y="97" font-size="13.2" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">member targets, and open opportunities into a</text>
       <text x="24" y="116" font-size="13.2" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">ranked list of business development plays.</text>
       <path d="M24 144H464" stroke="#19212e" stroke-width="1"/>
-      <text x="24" y="163" font-size="9.8" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">SCORING  &#183;  PIPELINE</text>
+      <text x="24" y="163" font-size="9.8" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">SCORING  ·  PIPELINE</text>
     </g>
     <g transform="translate(512 392)">
       <rect x="0" y="0" width="488" height="172" rx="12" fill="#0b1017"/>
@@ -147,7 +147,7 @@
       <text x="24" y="97" font-size="13.2" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">own language, with quizzes, flashcards, and</text>
       <text x="24" y="116" font-size="13.2" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">interview prep.</text>
       <path d="M24 144H464" stroke="#19212e" stroke-width="1"/>
-      <text x="24" y="163" font-size="9.8" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">MULTILINGUAL  &#183;  CHATBOT</text>
+      <text x="24" y="163" font-size="9.8" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">MULTILINGUAL  ·  CHATBOT</text>
     </g>
   </g>
   <g transform="translate(0 706)">

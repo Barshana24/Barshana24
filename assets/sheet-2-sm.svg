@@ -1,0 +1,210 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 1515" width="480" height="1515" role="img"
+     aria-label="Work manifest. Six selected projects of fourteen public repositories. technical-doc-generator, Python. Point it at a codebase and get back a README, an API reference, a UML diagram, and inline comments. Runs fully offline on a local model. ai-code-reviewer, TypeScript. Scores code across ten quality dimensions and exports a PDF report. No cloud API keys required, so nothing you review is uploaded. Token_minimiser, JavaScript. Chrome extension that shrinks prompts before they reach ChatGPT, Claude, or Gemini. Same instructions, 15-45% fewer tokens, works in any text box. FunellQ, TypeScript. Funnel analytics on Google's public GA4 e-commerce dataset. Finds where shoppers drop off, then sizes the biggest leak in real revenue. Siglo-GTM-tool, Python. GTM intelligence platform that scores signals, member targets, and open opportunities into a ranked list of business development plays. EduBot, TypeScript. Study assistant for engineering students in their own language, with quizzes, flashcards, and interview prep. Upstream. AOBench is a role-aware, permission-enforced benchmark for AI agents that operate HPC systems. I work on its command line interface. Pull requests authored: 43, add --json to report json and compare runs; 47, add aobench list coverage; 50, pay down mypy --strict debt in cli/. Title block. DRAWN BY: BARSHANA CHATTERJEE. LOCATION: KOLKATA, IN. SHEETS: 08. DISCIPLINE: AI SYSTEMS / RF. STATUS: OPEN TO COLLABORATION. REVISION: 03." font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">
+  <title>Work, upstream, contact</title>
+  <defs>
+    <pattern id="gf" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#111926" stroke-width="1"/></pattern>
+    <pattern id="gm" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M100 0H0V100" fill="none" stroke="#18212f" stroke-width="1"/></pattern>
+    <clipPath id="cnwrk"><rect x="0" y="0" width="480" height="84" rx="14"/></clipPath>
+    <linearGradient id="hnwrk" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#22d3ee" stop-opacity="0"/><stop offset="24%" stop-color="#22d3ee" stop-opacity="0.7"/><stop offset="60%" stop-color="#a78bfa" stop-opacity="0.5"/><stop offset="90%" stop-color="#34d399" stop-opacity="0.42"/><stop offset="100%" stop-color="#34d399" stop-opacity="0"/></linearGradient>
+    <clipPath id="cncd0"><rect x="0" y="0" width="436" height="145" rx="11"/></clipPath>
+    <linearGradient id="hncd0" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#3572A5" stop-opacity="0.75"/><stop offset="100%" stop-color="#3572A5" stop-opacity="0"/></linearGradient>
+    <clipPath id="cncd1"><rect x="0" y="0" width="436" height="145" rx="11"/></clipPath>
+    <linearGradient id="hncd1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#3178c6" stop-opacity="0.75"/><stop offset="100%" stop-color="#3178c6" stop-opacity="0"/></linearGradient>
+    <clipPath id="cncd2"><rect x="0" y="0" width="436" height="145" rx="11"/></clipPath>
+    <linearGradient id="hncd2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f1e05a" stop-opacity="0.75"/><stop offset="100%" stop-color="#f1e05a" stop-opacity="0"/></linearGradient>
+    <clipPath id="cncd3"><rect x="0" y="0" width="436" height="145" rx="11"/></clipPath>
+    <linearGradient id="hncd3" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#3178c6" stop-opacity="0.75"/><stop offset="100%" stop-color="#3178c6" stop-opacity="0"/></linearGradient>
+    <clipPath id="cncd4"><rect x="0" y="0" width="436" height="145" rx="11"/></clipPath>
+    <linearGradient id="hncd4" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#3572A5" stop-opacity="0.75"/><stop offset="100%" stop-color="#3572A5" stop-opacity="0"/></linearGradient>
+    <clipPath id="cncd5"><rect x="0" y="0" width="436" height="128" rx="11"/></clipPath>
+    <linearGradient id="hncd5" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#3178c6" stop-opacity="0.75"/><stop offset="100%" stop-color="#3178c6" stop-opacity="0"/></linearGradient>
+    <clipPath id="cnups"><rect x="0" y="0" width="480" height="268" rx="14"/></clipPath>
+    <radialGradient id="gnups" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#34d399" stop-opacity="0.1"/><stop offset="100%" stop-color="#34d399" stop-opacity="0"/></radialGradient>
+    <linearGradient id="hnups" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#22d3ee" stop-opacity="0"/><stop offset="24%" stop-color="#22d3ee" stop-opacity="0.7"/><stop offset="60%" stop-color="#a78bfa" stop-opacity="0.5"/><stop offset="90%" stop-color="#34d399" stop-opacity="0.42"/><stop offset="100%" stop-color="#34d399" stop-opacity="0"/></linearGradient>
+    <clipPath id="cnttl"><rect x="0" y="0" width="480" height="182" rx="14"/></clipPath>
+    <radialGradient id="gnttl" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#a78bfa" stop-opacity="0.1"/><stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/></radialGradient>
+    <linearGradient id="hnttl" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#22d3ee" stop-opacity="0"/><stop offset="24%" stop-color="#22d3ee" stop-opacity="0.7"/><stop offset="60%" stop-color="#a78bfa" stop-opacity="0.5"/><stop offset="90%" stop-color="#34d399" stop-opacity="0.42"/><stop offset="100%" stop-color="#34d399" stop-opacity="0"/></linearGradient>
+  </defs>
+  <g transform="translate(0 0)">
+    <rect x="0" y="0" width="480" height="84" rx="14" fill="#0a0e14"/>
+    <g clip-path="url(#cnwrk)">
+      <rect width="480" height="84" fill="url(#gf)"/>
+      
+      
+      <rect x="0" y="82" width="480" height="2" fill="url(#hnwrk)"/>
+    </g>
+    <rect x="22" y="24" width="6" height="6" fill="#22d3ee"/>
+    <text x="40" y="30" font-size="9.8" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.6">SHEET 06 / WORK MANIFEST</text>
+    <text x="446" y="30" font-size="9.8" fill="#22d3ee" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end" opacity="0.72">$ ls --selected</text>
+    <rect x="452" y="20" width="2" height="12" fill="#22d3ee"/>
+    <path d="M22 44H458" stroke="#19212e" stroke-width="1"/>
+    <text x="22" y="66" font-size="9.8" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">SIX OF FOURTEEN REPOS  ·  LINKS BELOW</text>
+  </g>
+  <g transform="translate(22 100)">
+    <g transform="translate(0 0)">
+      <rect x="0" y="0" width="436" height="145" rx="11" fill="#0b1017"/>
+      <g clip-path="url(#cncd0)">
+        <rect width="436" height="145" fill="url(#gf)"/>
+        <rect x="0" y="0" width="3" height="145" fill="#3572A5" opacity="0.85"/>
+        <rect x="0" y="143" width="436" height="2" fill="url(#hncd0)"/>
+      </g>
+      <rect x="0.5" y="0.5" width="435" height="144" rx="11" fill="none" stroke="#1d2634"/>
+      <text x="20" y="30" font-size="14.9" fill="#e8eef5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif" font-weight="700">technical-doc-generator</text>
+      <rect x="20" y="38" width="24" height="2" rx="1" fill="#3572A5" opacity="0.6"/>
+      <text x="410" y="29" font-size="9.8" fill="#6e7681" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">Python</text>
+      <circle cx="420" cy="26" r="3.2" fill="#3572A5"/>
+      <text x="20" y="60" font-size="12.1" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">Point it at a codebase and get back a README, an API</text>
+    <text x="20" y="77" font-size="12.1" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">reference, a UML diagram, and inline comments. Runs fully</text>
+    <text x="20" y="94" font-size="12.1" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">offline on a local model.</text>
+      <path d="M20 115H416" stroke="#19212e" stroke-width="1"/>
+      <text x="20" y="133" font-size="9.2" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.1">OFFLINE  ·  OLLAMA  ·  DOCS</text>
+    </g>
+    <g transform="translate(0 161)">
+      <rect x="0" y="0" width="436" height="145" rx="11" fill="#0b1017"/>
+      <g clip-path="url(#cncd1)">
+        <rect width="436" height="145" fill="url(#gf)"/>
+        <rect x="0" y="0" width="3" height="145" fill="#3178c6" opacity="0.85"/>
+        <rect x="0" y="143" width="436" height="2" fill="url(#hncd1)"/>
+      </g>
+      <rect x="0.5" y="0.5" width="435" height="144" rx="11" fill="none" stroke="#1d2634"/>
+      <text x="20" y="30" font-size="14.9" fill="#e8eef5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif" font-weight="700">ai-code-reviewer</text>
+      <rect x="20" y="38" width="24" height="2" rx="1" fill="#3178c6" opacity="0.6"/>
+      <text x="410" y="29" font-size="9.8" fill="#6e7681" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">TypeScript</text>
+      <circle cx="420" cy="26" r="3.2" fill="#3178c6"/>
+      <text x="20" y="60" font-size="12.1" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">Scores code across ten quality dimensions and exports a</text>
+    <text x="20" y="77" font-size="12.1" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">PDF report. No cloud API keys required, so nothing you</text>
+    <text x="20" y="94" font-size="12.1" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">review is uploaded.</text>
+      <path d="M20 115H416" stroke="#19212e" stroke-width="1"/>
+      <text x="20" y="133" font-size="9.2" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.1">OFFLINE  ·  FASTAPI  ·  PDF</text>
+    </g>
+    <g transform="translate(0 322)">
+      <rect x="0" y="0" width="436" height="145" rx="11" fill="#0b1017"/>
+      <g clip-path="url(#cncd2)">
+        <rect width="436" height="145" fill="url(#gf)"/>
+        <rect x="0" y="0" width="3" height="145" fill="#f1e05a" opacity="0.85"/>
+        <rect x="0" y="143" width="436" height="2" fill="url(#hncd2)"/>
+      </g>
+      <rect x="0.5" y="0.5" width="435" height="144" rx="11" fill="none" stroke="#1d2634"/>
+      <text x="20" y="30" font-size="14.9" fill="#e8eef5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif" font-weight="700">Token_minimiser</text>
+      <rect x="20" y="38" width="24" height="2" rx="1" fill="#f1e05a" opacity="0.6"/>
+      <text x="410" y="29" font-size="9.8" fill="#6e7681" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">JavaScript</text>
+      <circle cx="420" cy="26" r="3.2" fill="#f1e05a"/>
+      <text x="20" y="60" font-size="12.1" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">Chrome extension that shrinks prompts before they reach</text>
+    <text x="20" y="77" font-size="12.1" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">ChatGPT, Claude, or Gemini. Same instructions, 15-45%</text>
+    <text x="20" y="94" font-size="12.1" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">fewer tokens, works in any text box.</text>
+      <path d="M20 115H416" stroke="#19212e" stroke-width="1"/>
+      <text x="20" y="133" font-size="9.2" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.1">MIT  ·  EXTENSION  ·  OFFLINE</text>
+    </g>
+    <g transform="translate(0 483)">
+      <rect x="0" y="0" width="436" height="145" rx="11" fill="#0b1017"/>
+      <g clip-path="url(#cncd3)">
+        <rect width="436" height="145" fill="url(#gf)"/>
+        <rect x="0" y="0" width="3" height="145" fill="#3178c6" opacity="0.85"/>
+        <rect x="0" y="143" width="436" height="2" fill="url(#hncd3)"/>
+      </g>
+      <rect x="0.5" y="0.5" width="435" height="144" rx="11" fill="none" stroke="#1d2634"/>
+      <text x="20" y="30" font-size="14.9" fill="#e8eef5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif" font-weight="700">FunellQ</text>
+      <rect x="20" y="38" width="24" height="2" rx="1" fill="#3178c6" opacity="0.6"/>
+      <text x="410" y="29" font-size="9.8" fill="#6e7681" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">TypeScript</text>
+      <circle cx="420" cy="26" r="3.2" fill="#3178c6"/>
+      <text x="20" y="60" font-size="12.1" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">Funnel analytics on Google's public GA4 e-commerce</text>
+    <text x="20" y="77" font-size="12.1" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">dataset. Finds where shoppers drop off, then sizes the</text>
+    <text x="20" y="94" font-size="12.1" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">biggest leak in real revenue.</text>
+      <path d="M20 115H416" stroke="#19212e" stroke-width="1"/>
+      <text x="20" y="133" font-size="9.2" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.1">BIGQUERY  ·  ANALYTICS</text>
+    </g>
+    <g transform="translate(0 644)">
+      <rect x="0" y="0" width="436" height="145" rx="11" fill="#0b1017"/>
+      <g clip-path="url(#cncd4)">
+        <rect width="436" height="145" fill="url(#gf)"/>
+        <rect x="0" y="0" width="3" height="145" fill="#3572A5" opacity="0.85"/>
+        <rect x="0" y="143" width="436" height="2" fill="url(#hncd4)"/>
+      </g>
+      <rect x="0.5" y="0.5" width="435" height="144" rx="11" fill="none" stroke="#1d2634"/>
+      <text x="20" y="30" font-size="14.9" fill="#e8eef5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif" font-weight="700">Siglo-GTM-tool</text>
+      <rect x="20" y="38" width="24" height="2" rx="1" fill="#3572A5" opacity="0.6"/>
+      <text x="410" y="29" font-size="9.8" fill="#6e7681" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">Python</text>
+      <circle cx="420" cy="26" r="3.2" fill="#3572A5"/>
+      <text x="20" y="60" font-size="12.1" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">GTM intelligence platform that scores signals, member</text>
+    <text x="20" y="77" font-size="12.1" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">targets, and open opportunities into a ranked list of</text>
+    <text x="20" y="94" font-size="12.1" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">business development plays.</text>
+      <path d="M20 115H416" stroke="#19212e" stroke-width="1"/>
+      <text x="20" y="133" font-size="9.2" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.1">SCORING  ·  PIPELINE</text>
+    </g>
+    <g transform="translate(0 805)">
+      <rect x="0" y="0" width="436" height="128" rx="11" fill="#0b1017"/>
+      <g clip-path="url(#cncd5)">
+        <rect width="436" height="128" fill="url(#gf)"/>
+        <rect x="0" y="0" width="3" height="128" fill="#3178c6" opacity="0.85"/>
+        <rect x="0" y="126" width="436" height="2" fill="url(#hncd5)"/>
+      </g>
+      <rect x="0.5" y="0.5" width="435" height="127" rx="11" fill="none" stroke="#1d2634"/>
+      <text x="20" y="30" font-size="14.9" fill="#e8eef5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif" font-weight="700">EduBot</text>
+      <rect x="20" y="38" width="24" height="2" rx="1" fill="#3178c6" opacity="0.6"/>
+      <text x="410" y="29" font-size="9.8" fill="#6e7681" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end">TypeScript</text>
+      <circle cx="420" cy="26" r="3.2" fill="#3178c6"/>
+      <text x="20" y="60" font-size="12.1" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">Study assistant for engineering students in their own</text>
+    <text x="20" y="77" font-size="12.1" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">language, with quizzes, flashcards, and interview prep.</text>
+      <path d="M20 98H416" stroke="#19212e" stroke-width="1"/>
+      <text x="20" y="116" font-size="9.2" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.1">MULTILINGUAL  ·  CHATBOT</text>
+    </g>
+  </g>
+  <g transform="translate(0 1049)">
+    <rect x="0" y="0" width="480" height="268" rx="14" fill="#0a0e14"/>
+    <g clip-path="url(#cnups)">
+      <rect width="480" height="268" fill="url(#gf)"/>
+      
+      <ellipse cx="440" cy="480" rx="220" ry="130" fill="url(#gnups)"/>
+      <rect x="0" y="266" width="480" height="2" fill="url(#hnups)"/>
+    </g>
+    <rect x="22" y="24" width="6" height="6" fill="#22d3ee"/>
+    <text x="40" y="30" font-size="9.8" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.6">SHEET 07 / UPSTREAM</text>
+    <text x="446" y="30" font-size="9.8" fill="#22d3ee" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end" opacity="0.72">$ git log</text>
+    <rect x="452" y="20" width="2" height="12" fill="#22d3ee"/>
+    <path d="M22 44H458" stroke="#19212e" stroke-width="1"/>
+    <text x="22" y="70" font-size="13.2" fill="#c9d1d9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">AOBench is a role-aware, permission-enforced benchmark for</text>
+    <text x="22" y="88" font-size="13.2" fill="#c9d1d9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">AI agents that operate HPC systems: SLURM, telemetry, RBAC.</text>
+    <text x="22" y="106" font-size="13.2" fill="#c9d1d9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">I work on its CLI.</text>
+    <text x="22" y="142" font-size="9.8" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.5">PULL REQUESTS AUTHORED</text>
+    <circle cx="26" cy="160" r="3.2" fill="#34d399"/>
+    <text x="38" y="164" font-size="10.9" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">#43</text>
+    <text x="74" y="164" font-size="12.1" fill="#c9d1d9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">add --json to report json and compare runs</text>
+    <circle cx="26" cy="186" r="3.2" fill="#34d399"/>
+    <text x="38" y="190" font-size="10.9" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">#47</text>
+    <text x="74" y="190" font-size="12.1" fill="#c9d1d9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">add aobench list coverage</text>
+    <circle cx="26" cy="212" r="3.2" fill="#fbbf24"/>
+    <text x="38" y="216" font-size="10.9" fill="#fbbf24" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">#50</text>
+    <text x="74" y="216" font-size="12.1" fill="#c9d1d9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">pay down mypy --strict debt in cli/</text>
+    <text x="22" y="250" font-size="9.2" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.2">88 TASKS / 29 ENVIRONMENTS</text>
+  </g>
+  <g transform="translate(0 1333)">
+    <rect x="0" y="0" width="480" height="182" rx="14" fill="#0a0e14"/>
+    <g clip-path="url(#cnttl)">
+      <rect width="480" height="182" fill="url(#gf)"/>
+      
+      <ellipse cx="240" cy="480" rx="260" ry="120" fill="url(#gnttl)"/>
+      <rect x="0" y="180" width="480" height="2" fill="url(#hnttl)"/>
+    </g>
+    <g stroke="#22d3ee" stroke-width="1.2" fill="none" opacity="0.34" stroke-linecap="square"><path d="M18 34V18h16"/><path d="M446 18h16v16"/><path d="M462 148v16h-16"/><path d="M34 164H18v-16"/></g>
+    <rect x="22" y="24" width="6" height="6" fill="#22d3ee"/>
+    <text x="40" y="30" font-size="9.8" fill="#55606f" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.6">SHEET 08 / TITLE BLOCK</text>
+    <text x="446" y="30" font-size="9.8" fill="#22d3ee" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="end" opacity="0.72">$ contact</text>
+    <rect x="452" y="20" width="2" height="12" fill="#22d3ee"/>
+    <rect x="22" y="46" width="436" height="120" rx="8" fill="#0b1017" stroke="#1d2634"/>
+    <path d="M240 46v120" stroke="#1d2634" stroke-width="1"/>
+    <path d="M22 86h436" stroke="#1d2634" stroke-width="1"/>
+    <path d="M22 126h436" stroke="#1d2634" stroke-width="1"/>
+    <text x="33" y="61" font-size="8.0" fill="#4b5563" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">DRAWN BY</text>
+    <text x="33" y="76" font-size="9.8" fill="#c9d1d9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.4">BARSHANA CHATTERJEE</text>
+    <text x="251" y="61" font-size="8.0" fill="#4b5563" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">DISCIPLINE</text>
+    <text x="251" y="76" font-size="9.8" fill="#c9d1d9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.4">AI SYSTEMS / RF</text>
+    <text x="33" y="101" font-size="8.0" fill="#4b5563" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">LOCATION</text>
+    <text x="33" y="116" font-size="9.8" fill="#c9d1d9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.4">KOLKATA, IN</text>
+    <text x="251" y="101" font-size="8.0" fill="#4b5563" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">STATUS</text>
+    <text x="251" y="116" font-size="9.8" fill="#c9d1d9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.4">OPEN TO COLLABORATION</text>
+    <text x="33" y="141" font-size="8.0" fill="#4b5563" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">SHEETS</text>
+    <text x="33" y="156" font-size="9.8" fill="#c9d1d9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.4">08</text>
+    <text x="251" y="141" font-size="8.0" fill="#4b5563" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="1.3">REVISION</text>
+    <text x="251" y="156" font-size="9.8" fill="#c9d1d9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="0.4">03</text>
+  </g>
+</svg>
