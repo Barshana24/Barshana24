@@ -1,6 +1,11 @@
 <!--
   The sheets in assets/ are generated. Edit tools/build_panels.py and re-run it:
       python tools/build_panels.py
+
+  Sheet 08 draws the contribution heatmap from tools/contributions.json, which
+  is a cached snapshot. To bring it up to date:
+      python tools/fetch_contributions.py && python tools/build_panels.py
+
   Changes show up within about five minutes (raw.githubusercontent sends
   max-age=300). Do NOT add a ?v= cache-busting param to these URLs. A unique
   query string is a fresh CDN cache key, so every visitor misses the edge cache
@@ -13,7 +18,7 @@
     comes out more than twice the size. Both branches carry the same content.
   - Images point at raw.githubusercontent.com, not relative paths. GitHub
     rewrites relative paths to github.com/<owner>/<repo>/raw/..., which 404s.
-  - All eight panels live in two files per width, split only where real HTML
+  - All nine panels live in two files per width, split only where real HTML
     links are needed in between. Fewer requests keeps more of them served from
     the CDN edge rather than origin.
 -->
@@ -31,7 +36,7 @@
 
 <picture>
   <source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/Barshana24/Barshana24/main/assets/sheet-2-sm.svg">
-  <img src="https://raw.githubusercontent.com/Barshana24/Barshana24/main/assets/sheet-2.svg" width="100%" alt="Work manifest, six selected projects. technical-doc-generator in Python: point it at a codebase and get back a README, an API reference, a UML diagram, and inline comments, fully offline on a local model. ai-code-reviewer in TypeScript: scores code across ten quality dimensions and exports a PDF report, no cloud API keys required. Token_minimiser in JavaScript: Chrome extension that shrinks prompts before they reach ChatGPT, Claude, or Gemini, 15 to 45 percent fewer tokens. FunellQ in TypeScript: funnel analytics on Google's public GA4 e-commerce dataset that sizes the biggest leak in real revenue. Siglo-GTM-tool in Python: scores signals, member targets, and open opportunities into a ranked list of business development plays. EduBot in TypeScript: study assistant for engineering students in their own language. Upstream: AOBench is a role-aware, permission-enforced benchmark for AI agents that operate HPC systems, and I work on its command line interface, with pull requests 43, 47, and 50. Drawn by Barshana Chatterjee, Kolkata India, open to collaboration.">
+  <img src="https://raw.githubusercontent.com/Barshana24/Barshana24/main/assets/sheet-2.svg" width="100%" alt="Work manifest, six selected projects. technical-doc-generator in Python: point it at a codebase and get back a README, an API reference, a UML diagram, and inline comments, fully offline on a local model. ai-code-reviewer in TypeScript: scores code across ten quality dimensions and exports a PDF report, no cloud API keys required. Token_minimiser in JavaScript: Chrome extension that shrinks prompts before they reach ChatGPT, Claude, or Gemini, 15 to 45 percent fewer tokens. FunellQ in TypeScript: funnel analytics on Google's public GA4 e-commerce dataset that sizes the biggest leak in real revenue. Siglo-GTM-tool in Python: scores signals, member targets, and open opportunities into a ranked list of business development plays. EduBot in TypeScript: study assistant for engineering students in their own language. Upstream: AOBench is a role-aware, permission-enforced benchmark for AI agents that operate HPC systems, and I work on its command line interface, with pull requests 43, 47, and 50. Contributions in the last 12 months: 253 across 130 active days, longest streak 8 days, busiest day 16. Drawn by Barshana Chatterjee, Kolkata India, open to collaboration.">
 </picture>
 
 <p align="center">

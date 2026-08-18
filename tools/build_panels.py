@@ -22,6 +22,7 @@ Two constraints shaped this file, both worth knowing before you change it.
    frozen at its start value.
 """
 
+import json
 import textwrap
 from pathlib import Path
 
@@ -153,7 +154,9 @@ class Panel:
                  corner_marks=False, hairline=CY, radius=14):
         self.uid = uid
         self.w = w
-        self.h = h
+        # Heights are computed from wrapped copy and fractional grid pitches, so
+        # round here rather than leaving a fractional viewBox on the composite.
+        self.h = int(round(h))
         self.aria = aria
         self.major_grid = major_grid
         self.glow = glow
@@ -565,22 +568,116 @@ def p_upstream():
 
 # ---------------------------------------------------------------- sheet 08
 
-# There is deliberately no contribution-graph panel. The usual third-party
-# services for it are unreliable: github-readme-stats is deployment-paused,
-# streak-stats returns an error card, and the activity graph intermittently
-# renders "Can't fetch any contribution" as a full-width banner. GitHub already
-# draws the real contribution calendar directly below the README, so nothing is
-# lost by leaving it out.
+# The contribution heatmap is drawn here from cached real data rather than
+# pulled from a service. Every third-party renderer for this was broken:
+# github-readme-stats is deployment-paused, streak-stats returns an error card,
+# and the activity graph intermittently served "Can't fetch any contribution"
+# as a full-width banner. Refresh with tools/fetch_contributions.py.
+
+CONTRIB_PATH = Path(__file__).resolve().parent / "contributions.json"
+
+# Level ramp, teal through to the cyan accent, monotonically brighter so it reads
+# as intensity. Index 0 is the empty-day colour. Level 1 is deliberately well
+# clear of it: most active days sit at level 1, and a dim level 1 made the whole
+# grid read as one flat block.
+HEAT = ["#161d2b", "#155e70", "#1b93ab", "#22c5e0", "#7de8f7"]
+
+MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN",
+          "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
+
+
+def load_contrib():
+    try:
+        return json.loads(CONTRIB_PATH.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        print("  ! contributions.json missing, skipping sheet 08."
+              " Run tools/fetch_contributions.py first.")
+        return None
+
+
+CONTRIB = load_contrib()
+
+
+def heat_grid(x0, y0, cell, gap, label_gap=26, month_size=8.5, min_label_px=26):
+    """Draw the week-by-day heatmap. Returns (markup, width, height)."""
+    pitch = cell + gap
+    by_week = {}
+    for d in CONTRIB["days"]:
+        by_week.setdefault(d["week"], {})[d["row"]] = d
+    weeks = sorted(by_week)
+
+    out, labels = [], []
+    last_month, last_x = None, -999
+    for w in weeks:
+        x = x0 + w * pitch
+        first = min(by_week[w].values(), key=lambda d: d["date"])
+        month = int(first["date"][5:7])
+        if month != last_month and x - last_x >= min_label_px:
+            labels.append(mono(x, y0 - 9, month_size, T5, MONTHS[month - 1], ls=1.1))
+            last_x = x
+        last_month = month
+        for row, d in by_week[w].items():
+            out.append(f'<rect x="{x}" y="{round(y0 + row * pitch, 1)}" width="{cell}" '
+                       f'height="{cell}" rx="{round(cell * 0.22, 1)}" '
+                       f'fill="{HEAT[min(d["level"], 4)]}"/>')
+
+    width = len(weeks) * pitch - gap
+    height = 7 * pitch - gap
+    return "\n    ".join(labels + out), width, height
+
+
+def contrib_stats():
+    c = CONTRIB
+    return [("CONTRIBUTIONS", str(c["total"]), CY),
+            ("ACTIVE DAYS", str(c["active_days"]), GR),
+            ("LONGEST STREAK", f"{c['longest_streak']}d", VI),
+            ("BUSIEST DAY", str(c["busiest"]), AM)]
+
+
+def p_contrib():
+    grid, gw, gh = heat_grid(74, 102, 13, 3)
+    b = [sheet_head("08", "CONTRIBUTIONS", "$ git log --since=1.year | wc -l"),
+         rule(40, 50, 960),
+         mono(40, 74, 9.5, T5,
+              f"LAST 12 MONTHS  {DOT}  SNAPSHOT {CONTRIB['fetched']}", ls=1.5),
+         grid]
+    for row, day in ((1, "MON"), (3, "WED"), (5, "FRI")):
+        b.append(mono(64, 102 + row * 16 + 10, 8, T6, day, anchor="end", ls=0.8))
+
+    y = 102 + gh + 26
+    b.append(rule(40, y, 960))
+    for i, (label, value, col) in enumerate(contrib_stats()):
+        x = 40 + i * 196
+        b.append(mono(x, y + 22, 8.5, T5, label, ls=1.4))
+        b.append(sans(x, y + 48, 20, T1, value, weight=700))
+        b.append(f'<rect x="{x}" y="{y + 56}" width="34" height="2" rx="1" fill="{col}"/>')
+
+    # legend, right aligned against the grid edge
+    lx = 74 + gw - 5 * 15
+    b.append(mono(lx - 12, y + 46, 8, T6, "LESS", anchor="end", ls=1.0))
+    for i, c in enumerate(HEAT):
+        b.append(f'<rect x="{lx + i * 15}" y="{y + 38}" width="11" height="11" rx="2" fill="{c}"/>')
+    b.append(mono(lx + 5 * 15 + 2, y + 46, 8, T6, "MORE", ls=1.0))
+
+    aria = (f"Contributions in the last 12 months as of {CONTRIB['fetched']}: "
+            f"{CONTRIB['total']} contributions across {CONTRIB['active_days']} active days, "
+            f"longest streak {CONTRIB['longest_streak']} days, busiest day "
+            f"{CONTRIB['busiest']} contributions.")
+    return Panel("con", y + 76, "\n    ".join(b), aria,
+                 glow=(880, -20, 380, 150, CY, 0.11))
+
+
+# ---------------------------------------------------------------- sheet 09
 
 BLOCK = [
-    [("DRAWN BY", "BARSHANA CHATTERJEE"), ("LOCATION", "KOLKATA, IN"), ("SHEETS", "08")],
-    [("DISCIPLINE", "AI SYSTEMS / RF"), ("STATUS", "OPEN TO COLLABORATION"), ("REVISION", "03")],
+    [("DRAWN BY", "BARSHANA CHATTERJEE"), ("LOCATION", "KOLKATA, IN"), ("SHEETS", "09")],
+    [("DISCIPLINE", "AI SYSTEMS / RF"), ("STATUS", "OPEN TO COLLABORATION"), ("REVISION", "04")],
 ]
 
 
 def p_titleblock():
     h = 176
-    b = [sheet_head("08", "TITLE BLOCK", "$ contact --print")]
+    b = [sheet_head("09", "TITLE BLOCK", "$ contact --print")]
     bx, by, bw, bh = 40, 62, 920, 84
     cw, ch = bw // 3, bh // 2
     b.append(f'<rect x="{bx}" y="{by}" width="{bw}" height="{bh}" rx="8" '
@@ -840,8 +937,40 @@ def n_upstream():
                  glow=(NW - 40, NW, 220, 130, GR, 0.10))
 
 
+def n_contrib():
+    # Cells shrink to fit 53 weeks into the narrow column. Day-of-week labels are
+    # dropped; at this size they cost more room than they explain.
+    grid, gw, gh = heat_grid(NM + 2, 96, 5.5, 1.4, month_size=7.5, min_label_px=30)
+    b = [n_head("08", "CONTRIBUTIONS", "$ git log -1y"), rule(NM, 44, NW - NM),
+         mono(NM, 66, 8, T5, f"LAST 12 MONTHS  {DOT}  {CONTRIB['fetched']}", ls=1.2),
+         grid]
+
+    y = 96 + gh + 20
+    b.append(mono(NM, y, 8, T6, "LESS", ls=1.0))
+    for i, c in enumerate(HEAT):
+        b.append(f'<rect x="{NM + 34 + i * 13}" y="{y - 8}" width="10" height="10" rx="2" fill="{c}"/>')
+    b.append(mono(NM + 34 + 5 * 13 + 2, y, 8, T6, "MORE", ls=1.0))
+
+    y += 18
+    b.append(rule(NM, y, NW - NM))
+    cw = NI // 2
+    for i, (label, value, col) in enumerate(contrib_stats()):
+        x = NM + (i % 2) * cw
+        ry = y + 24 + (i // 2) * 52
+        b.append(mono(x, ry, 8, T5, label, ls=1.2))
+        b.append(sans(x, ry + 24, 18, T1, value, weight=700))
+        b.append(f'<rect x="{x}" y="{ry + 31}" width="30" height="2" rx="1" fill="{col}"/>')
+
+    aria = (f"Contributions in the last 12 months as of {CONTRIB['fetched']}: "
+            f"{CONTRIB['total']} contributions across {CONTRIB['active_days']} active days, "
+            f"longest streak {CONTRIB['longest_streak']} days, busiest day "
+            f"{CONTRIB['busiest']} contributions.")
+    return Panel("ncon", y + 24 + 52 + 26, "\n    ".join(b), aria, w=NW,
+                 glow=(NW - 40, -20, 220, 130, CY, 0.11))
+
+
 def n_titleblock():
-    b = [n_head("08", "TITLE BLOCK", "$ contact")]
+    b = [n_head("09", "TITLE BLOCK", "$ contact")]
     fields = [f for row in BLOCK for f in row]
     cw, ch = NI // 2, 40
     by = 46
@@ -869,11 +998,13 @@ if __name__ == "__main__":
     # the module docstring, so resist adding more.
     compose("sheet-1.svg", [p_header(), p_brief(), p_signals(), p_stack(), p_pipeline()],
             title="Barshana Chatterjee")
-    compose("sheet-2.svg", [p_work(), CardGrid(), p_upstream(), p_titleblock()],
-            title="Work, upstream, contact")
+    compose("sheet-2.svg", [p_work(), CardGrid(), p_upstream()] +
+            ([p_contrib()] if CONTRIB else []) + [p_titleblock()],
+            title="Work, upstream, contributions, contact")
     # Phone variants, selected by the <picture> media query in the README.
     compose("sheet-1-sm.svg", [n_header(), n_brief(), n_signals(), n_stack(), n_pipeline()],
             gap=16, title="Barshana Chatterjee")
-    compose("sheet-2-sm.svg", [n_work(), NarrowCardGrid(), n_upstream(), n_titleblock()],
-            gap=16, title="Work, upstream, contact")
+    compose("sheet-2-sm.svg", [n_work(), NarrowCardGrid(), n_upstream()] +
+            ([n_contrib()] if CONTRIB else []) + [n_titleblock()],
+            gap=16, title="Work, upstream, contributions, contact")
     print("done")
